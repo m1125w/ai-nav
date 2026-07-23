@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Nav · 年轻人的AI工具箱</title>
+<meta name="description" content="精选最懂年轻人的AI工具,拯救论文、求职、社恐、缺钱的你。">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  :root{
+    --bg:#0a0a0f;--bg-soft:#12121a;--surface:#181820;--surface-hover:#1f1f2a;
+    --border:rgba(255,255,255,.06);--border-strong:rgba(255,255,255,.1);
+    --text:#f5f5f7;--text-soft:#a1a1aa;--text-mute:#71717a;
+    --accent:#8b5cf6;--accent-2:#06b6d4;--success:#10b981;--warn:#f59e0b;
+    --accent-gradient:linear-gradient(135deg,#8b5cf6 0%,#06b6d4 100%);
+    --radius:14px;--radius-sm:10px;--shadow:0 4px 24px rgba(0,0,0,.4);--container:1200px;
+  }
+  html{scroll-behavior:smooth}
+  body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Helvetica Neue","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  body::before{content:"";position:fixed;top:-20%;left:-10%;width:600px;height:600px;background:radial-gradient(circle,rgba(139,92,246,.12),transparent 70%);pointer-events:none;z-index:0}
+  body::after{content:"";position:fixed;bottom:-20%;right:-10%;width:600px;height:600px;background:radial-gradient(circle,rgba(6,182,212,.1),transparent 70%);pointer-events:none;z-index:0}
+  .container{max-width:var(--container);margin:0 auto;padding:0 24px;position:relative;z-index:1}
+  .header{position:sticky;top:0;z-index:100;backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);background:rgba(10,10,15,.75);border-bottom:1px solid var(--border)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:68px}
+  .logo{display:flex;align-items:center;gap:10px;font-weight:700;font-size:18px;letter-spacing:-.02em;text-decoration:none;color:var(--text)}
+  .logo-mark{width:32px;height:32px;border-radius:9px;background:var(--accent-gradient);display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:800;color:#fff;box-shadow:0 4px 16px rgba(139,92,246,.35)}
+  .nav-links{display:flex;gap:28px;align-items:center}
+  .nav-links a{color:var(--text-soft);text-decoration:none;font-size:14px;transition:color .2s}
+  .nav-links a:hover{color:var(--text)}
+  .nav-btn{padding:8px 18px;border-radius:999px;background:var(--accent-gradient);color:#fff!important;font-weight:600;font-size:13px;border:none;cursor:pointer;transition:transform .2s,box-shadow .2s}
+  .nav-btn:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(139,92,246,.35)}
+  .hero{padding:72px 0 48px;position:relative}
+  .hero-tag{display:inline-flex;align-items:center;gap:8px;padding:6px 14px;border-radius:999px;background:rgba(139,92,246,.1);border:1px solid rgba(139,92,246,.2);color:#c4b5fd;font-size:12.5px;font-weight:500;margin-bottom:20px}
+  .hero-tag .dot{width:6px;height:6px;border-radius:50%;background:#10b981;box-shadow:0 0 12px #10b981}
+  .hero h1{font-size:clamp(34px,5vw,56px);font-weight:800;letter-spacing:-.03em;line-height:1.1;margin-bottom:18px}
+  .hero h1 .grad{background:var(--accent-gradient);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+  .hero p{font-size:17px;color:var(--text-soft);max-width:580px;margin-bottom:32px}
+  .search-wrap{max-width:680px;position:relative;margin-bottom:40px}
+  .search-box{display:flex;align-items:center;background:var(--surface);border:1px solid var(--border-strong);border-radius:999px;padding:6px 8px 6px 22px;transition:border-color .2s,box-shadow .2s}
+  .search-box:focus-within{border-color:rgba(139,92,246,.4);box-shadow:0 0 0 4px rgba(139,92,246,.1)}
+  .search-box svg{flex-shrink:0;color:var(--text-mute)}
+  .search-box input{flex:1;border:none;outline:none;background:transparent;color:var(--text);font-size:15px;padding:14px 12px;font-family:inherit}
+  .search-box input::placeholder{color:var(--text-mute)}
+  .search-btn{padding:12px 26px;border-radius:999px;background:var(--accent-gradient);color:#fff;border:none;font-weight:600;font-size:14px;cursor:pointer;font-family:inherit;transition:transform .15s}
+  .search-btn:hover{transform:scale(1.03)}
+  .stats{display:flex;gap:48px;flex-wrap:wrap;padding:24px 0;border-top:1px solid var(--border)}
+  .stat-item .num{font-size:28px;font-weight:800;letter-spacing:-.02em}
+  .stat-item .lbl{font-size:13px;color:var(--text-mute);margin-top:2px}
+  .ad-banner{margin:36px 0;border-radius:var(--radius);background:linear-gradient(135deg,rgba(139,92,246,.12),rgba(6,182,212,.1));border:1px dashed var(--border-strong);padding:28px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;position:relative;overflow:hidden}
+  .ad-banner::before{content:"广告位 · AD";position:absolute;top:10px;right:14px;font-size:10px;color:var(--text-mute);letter-spacing:.08em;font-weight:600}
+  .ad-banner h3{font-size:18px;margin-bottom:4px;font-weight:700}
+  .ad-banner p{font-size:13.5px;color:var(--text-soft)}
+  .ad-banner .ad-cta{padding:10px 22px;border-radius:999px;background:var(--text);color:var(--bg);font-weight:600;font-size:13.5px;text-decoration:none;white-space:nowrap;transition:transform .15s}
+  .ad-banner .ad-cta:hover{transform:translateY(-1px)}
+  .section{padding:40px 0}
+  .section-head{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:28px;flex-wrap:wrap;gap:16px}
+  .section-head h2{font-size:26px;font-weight:800;letter-spacing:-.02em}
+  .section-head h2 .sub{display:block;font-size:13px;font-weight:500;color:var(--text-mute);margin-top:6px;letter-spacing:0}
+  .cat-wrap{display:flex;gap:10px;overflow-x:auto;padding-bottom:4px;scrollbar-width:none;-ms-overflow-style:none;margin-bottom:28px}
+  .cat-wrap::-webkit-scrollbar{display:none}
+  .cat-chip{flex-shrink:0;padding:10px 18px;border-radius:999px;background:var(--surface);border:1px solid var(--border);color:var(--text-soft);font-size:13.5px;font-weight:500;cursor:pointer;transition:all .2s;white-space:nowrap;display:flex;align-items:center;gap:7px}
+  .cat-chip:hover{background:var(--surface-hover);color:var(--text)}
+  .cat-chip.active{background:var(--accent-gradient);border-color:transparent;color:#fff;box-shadow:0 4px 16px rgba(139,92,246,.3)}
+  .cat-chip .emoji{font-size:15px}
+  .tool-grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fill,minmax(320px,1fr))}
+  .tool-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:22px;transition:all .25s cubic-bezier(.4,0,.2,1);position:relative;cursor:pointer;display:flex;flex-direction:column;gap:14px}
+  .tool-card:hover{background:var(--surface-hover);border-color:rgba(139,92,246,.25);transform:translateY(-3px);box-shadow:var(--shadow)}
+  .tool-top{display:flex;gap:14px;align-items:flex-start}
+  .tool-icon{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0;background:linear-gradient(135deg,rgba(139,92,246,.18),rgba(6,182,212,.14));border:1px solid var(--border)}
+  .tool-meta{flex:1;min-width:0}
+  .tool-name{font-size:16px;font-weight:700;margin-bottom:3px;display:flex;align-items:center;gap:8px}
+  .tool-badge{font-size:10px;padding:2px 7px;border-radius:5px;background:rgba(16,185,129,.15);color:#34d399;font-weight:600;letter-spacing:.02em}
+  .tool-badge.hot{background:rgba(239,68,68,.15);color:#f87171}
+  .tool-badge.new{background:rgba(245,158,11,.15);color:#fbbf24}
+  .tool-desc{font-size:13.5px;color:var(--text-soft);line-height:1.5}
+  .tool-tags{display:flex;flex-wrap:wrap;gap:6px}
+  .tool-tag{font-size:11.5px;padding:4px 10px;border-radius:6px;background:rgba(255,255,255,.04);color:var(--text-mute);border:1px solid var(--border)}
+  .tool-foot{display:flex;align-items:center;justify-content:space-between;padding-top:10px;border-top:1px solid var(--border);margin-top:auto}
+  .tool-price{font-size:12.5px;color:var(--text-mute);display:flex;align-items:center;gap:5px}
+  .tool-price .free{color:var(--success);font-weight:600}
+  .tool-price .paid{color:var(--warn);font-weight:600}
+  .tool-go{padding:7px 14px;border-radius:8px;background:rgba(139,92,246,.12);color:#c4b5fd;font-size:12.5px;font-weight:600;text-decoration:none;display:flex;align-items:center;gap:4px;transition:all .2s}
+  .tool-go:hover{background:var(--accent-gradient);color:#fff}
+  .native-ad{background:linear-gradient(135deg,rgba(245,158,11,.08),rgba(239,68,68,.08));border:1px solid rgba(245,158,11,.2);position:relative}
+  .native-ad::after{content:"赞助 · SPONSORED";position:absolute;top:14px;right:16px;font-size:9.5px;color:var(--text-mute);letter-spacing:.1em;font-weight:700;padding:3px 8px;border-radius:4px;background:rgba(255,255,255,.03);border:1px solid var(--border)}
+  .pain-section{padding:60px 0;margin-top:20px}
+  .pain-grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));margin-top:28px}
+  .pain-card{padding:24px;border-radius:var(--radius);background:var(--surface);border:1px solid var(--border);transition:all .25s}
+  .pain-card:hover{border-color:rgba(139,92,246,.3);transform:translateY(-2px)}
+  .pain-emoji{font-size:32px;margin-bottom:12px}
+  .pain-card h4{font-size:16px;margin-bottom:6px;font-weight:700}
+  .pain-card p{font-size:13px;color:var(--text-soft)}
+  .main-layout{display:grid;gap:32px;grid-template-columns:1fr 300px}
+  @media(max-width:960px){.main-layout{grid-template-columns:1fr}}
+  .sidebar-sticky{position:sticky;top:92px;align-self:start;display:flex;flex-direction:column;gap:20px}
+  .side-ad{border-radius:var(--radius);border:1px dashed var(--border-strong);padding:24px;background:linear-gradient(160deg,rgba(6,182,212,.08),rgba(139,92,246,.08));position:relative;min-height:260px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center}
+  .side-ad::before{content:"侧边广告";position:absolute;top:10px;left:12px;font-size:10px;color:var(--text-mute);letter-spacing:.1em;font-weight:600}
+  .side-ad h4{font-size:16px;margin-bottom:6px;font-weight:700}
+  .side-ad p{font-size:12.5px;color:var(--text-soft);margin-bottom:16px}
+  .side-ad-cta{padding:9px 20px;border-radius:999px;background:var(--text);color:var(--bg);text-decoration:none;font-size:12.5px;font-weight:600}
+  .submit-cta{margin:60px 0;padding:48px 36px;border-radius:20px;background:radial-gradient(ellipse at top left,rgba(139,92,246,.2),transparent 50%),radial-gradient(ellipse at bottom right,rgba(6,182,212,.18),transparent 50%),var(--surface);border:1px solid var(--border-strong);display:flex;align-items:center;justify-content:space-between;gap:32px;flex-wrap:wrap}
+  .submit-cta h3{font-size:24px;font-weight:800;margin-bottom:8px;letter-spacing:-.02em}
+  .submit-cta p{font-size:14.5px;color:var(--text-soft);max-width:480px}
+  .submit-btn{padding:14px 30px;border-radius:999px;background:var(--accent-gradient);color:#fff;text-decoration:none;font-weight:700;font-size:15px;box-shadow:0 10px 30px rgba(139,92,246,.3);transition:transform .2s;white-space:nowrap}
+  .submit-btn:hover{transform:translateY(-2px)}
+  .footer{padding:48px 0 36px;border-top:1px solid var(--border);margin-top:40px}
+  .foot-grid{display:grid;gap:40px;grid-template-columns:2fr 1fr 1fr 1fr;margin-bottom:36px}
+  @media(max-width:720px){.foot-grid{grid-template-columns:1fr 1fr;gap:28px}}
+  .foot-brand p{font-size:13px;color:var(--text-mute);margin-top:12px;max-width:320px}
+  .foot-col h5{font-size:13px;font-weight:700;margin-bottom:14px;color:var(--text)}
+  .foot-col a{display:block;font-size:13px;color:var(--text-soft);text-decoration:none;padding:5px 0;transition:color .2s}
+  .foot-col a:hover{color:var(--text)}
+  .foot-bottom{padding-top:24px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;font-size:12px;color:var(--text-mute)}
+  .socials{display:flex;gap:10px}
+  .socials a{width:34px;height:34px;border-radius:9px;background:var(--surface);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--text-soft);text-decoration:none;transition:all .2s}
+  .socials a:hover{background:var(--surface-hover);color:var(--text)}
+  .toast{position:fixed;bottom:32px;left:50%;transform:translateX(-50%) translateY(100px);padding:12px 22px;border-radius:12px;background:var(--surface);border:1px solid var(--border-strong);color:var(--text);font-size:13.5px;font-weight:500;box-shadow:var(--shadow);transition:transform .35s cubic-bezier(.4,0,.2,1);z-index:999;display:flex;align-items:center;gap:8px}
+  .toast.show{transform:translateX(-50%) translateY(0)}
+  .toast .ok{color:var(--success);font-weight:700}
+  .fade-up{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}
+  .fade-up.in{opacity:1;transform:translateY(0)}
+  .stagger > *{opacity:0;transform:translateY(16px);transition:all .5s cubic-bezier(.4,0,.2,1)}
+  .stagger.in > *:nth-child(1){transition-delay:.02s;opacity:1;transform:translateY(0)}
+  .stagger.in > *:nth-child(2){transition-delay:.06s;opacity:1;transform:translateY(0)}
+  .stagger.in > *:nth-child(3){transition-delay:.10s;opacity:1;transform:translateY(0)}
+  .stagger.in > *:nth-child(4){transition-delay:.14s;opacity:1;transform:translateY(0)}
+  .stagger.in > *:nth-child(5){transition-delay:.18s;opacity:1;transform:translateY(0)}
+  .stagger.in > *:nth-child(6){transition-delay:.22s;opacity:1;transform:translateY(0)}
+  .stagger.in > *:nth-child(7){transition-delay:.26s;opacity:1;transform:translateY(0)}
+  .stagger.in > *:nth-child(8){transition-delay:.30s;opacity:1;transform:translateY(0)}
+  .stagger.in > *:nth-child(9){transition-delay:.34s;opacity:1;transform:translateY(0)}
+  .stagger.in > *:nth-child(n+10){transition-delay:.38s;opacity:1;transform:translateY(0)}
+  @media(max-width:640px){
+    .nav-links{display:none}
+    .hero{padding:48px 0 32px}
+    .ad-banner{padding:22px}
+    .stats{gap:28px}
+    .stat-item .num{font-size:22px}
+    .submit-cta{padding:36px 24px}
+    .tool-grid{grid-template-columns:1fr}
+    .pain-grid{grid-template-columns:1fr 1fr}
+  }
+</style>
+</head>
+<body>
+<header class="header"><div class="container nav"><a href="#" class="logo"><span class="logo-mark">AI</span><span>AINav<sup style="font-size:9px;color:var(--accent)">.pro</sup></span></a><nav class="nav-links"><a href="#tools">全部工具</a><a href="#pain">痛点专区</a><a href="#submit">提交工具</a><a href="#" class="nav-btn">🔥 今日精选</a></nav></div></header>
+<section class="hero"><div class="container"><span class="hero-tag fade-up"><span class="dot"></span>实时更新 · 已收录 168 款精选工具</span><h1 class="fade-up">别再瞎找AI了<br><span class="grad">这里只解决你的真实痛点</span></h1><p class="fade-up">论文赶due、简历石沉大海、聊天冷场、副业没思路？精选AI工具,让年轻人少走弯路,多省时间多搞钱。</p><div class="search-wrap fade-up"><div class="search-box"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg><input type="text" id="searchInput" placeholder="搜痛点:论文、简历、话术、搞钱、PPT、代码..."><button class="search-btn" onclick="doSearch()">搜索</button></div></div><div class="stats fade-up"><div class="stat-item"><div class="num">168+</div><div class="lbl">精选AI工具</div></div><div class="stat-item"><div class="num">8</div><div class="lbl">痛点分类</div></div><div class="stat-item"><div class="num">99%</div><div class="lbl">亲测可用</div></div><div class="stat-item"><div class="num">0</div><div class="lbl">注册强制</div></div></div></div></section>
+<div class="container"><div class="ad-banner fade-up" id="topAd"><div><h3>🎓 论文急救包 · AI降重+润色+文献一键搞定</h3><p>毕业论文初稿7天搞定,查重率低于10%,室友都在偷偷用...</p></div><a href="#" class="ad-cta">立即查看 →</a></div></div>
+<section class="section" id="tools"><div class="container"><div class="main-layout"><div><div class="section-head fade-up"><h2>工具库<span class="sub">按你的真实需求分类,拒绝花里胡哨</span></h2></div><div class="cat-wrap fade-up" id="catWrap"><button class="cat-chip active" data-cat="all"><span class="emoji">🔥</span>全部推荐</button><button class="cat-chip" data-cat="study"><span class="emoji">📚</span>学习考试</button><button class="cat-chip" data-cat="job"><span class="emoji">💼</span>求职就业</button><button class="cat-chip" data-cat="write"><span class="emoji">✍️</span>写作文案</button><button class="cat-chip" data-cat="design"><span class="emoji">🎨</span>设计创作</button><button class="cat-chip" data-cat="code"><span class="emoji">💻</span>编程开发</button><button class="cat-chip" data-cat="social"><span class="emoji">💬</span>社交恋爱</button><button class="cat-chip" data-cat="money"><span class="emoji">💰</span>赚钱副业</button><button class="cat-chip" data-cat="office"><span class="emoji">⚡</span>效率办公</button></div><div class="tool-grid stagger" id="toolGrid"></div><div class="ad-banner fade-up" style="margin-top:36px;"><div><h3>💻 编程小白福音 · 30分钟搭建自己的AI副业站点</h3><p>零基础也能上线,自动收录+SEO优化,被动收入这不就来了...</p></div><a href="#" class="ad-cta">获取教程 →</a></div></div><aside class="sidebar-sticky"><div class="side-ad fade-up"><h4>🚀 AI副业训练营</h4><p>用AI做3个副业项目<br>月入5k+的实操路线图</p><a href="#" class="side-ad-cta">免费加入 →</a></div><div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:20px;"><div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;"><h5 style="font-size:14px;font-weight:700;">🔥 本周飙升榜</h5><span style="font-size:11px;color:var(--text-mute);">实时</span></div><div id="hotList" style="display:flex;flex-direction:column;gap:12px;"></div></div><div class="side-ad fade-up" style="background:linear-gradient(160deg,rgba(16,185,129,.08),rgba(6,182,212,.08));border-color:rgba(16,185,129,.18);"><h4>📝 简历诊断服务</h4><p>AI+资深HR双重把关<br>投递回复率提升300%</p><a href="#" class="side-ad-cta">免费诊断 →</a></div></aside></div></div></section>
+<section class="pain-section" id="pain"><div class="container"><div class="section-head fade-up"><h2>年轻人的8大痛点<span class="sub">每一个都是正在经历的崩溃瞬间</span></h2></div><div class="pain-grid stagger" id="painGrid"></div></div></section>
+<section class="container" id="submit"><div class="submit-cta fade-up"><div><h3>有好用的AI工具?欢迎提交</h3><p>审核通过即可免费获得首页推荐位 + 专属标签曝光,让你的工具被数万年轻人看到。</p></div><a href="#" class="submit-btn">✨ 立即提交工具</a></div></section>
+<footer class="footer"><div class="container"><div class="foot-grid"><div class="foot-brand"><a href="#" class="logo"><span class="logo-mark">AI</span><span>AINav<sup style="font-size:9px;color:var(--accent)">.pro</sup></span></a><p>专属于年轻人的AI工具导航。拒绝信息过载,只给你真正有用的。让AI成为你的外挂,而不是你的焦虑来源。</p><div class="socials" style="margin-top:18px;"><a href="#" title="GitHub"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.37.5 0 5.87 0 12.5c0 5.3 3.44 9.8 8.2 11.4.6.1.82-.26.82-.58v-2.03c-3.34.72-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.74.08-.73.08-.73 1.2.08 1.84 1.23 1.84 1.23 1.07 1.84 2.8 1.31 3.5 1 .1-.77.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.23-3.22-.12-.3-.54-1.52.12-3.17 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.29-1.55 3.3-1.23 3.3-1.23.66 1.65.24 2.87.12 3.17.77.84 1.23 1.91 1.23 3.22 0 4.61-2.8 5.62-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.82.58A12 12 0 0 0 24 12.5C24 5.87 18.63.5 12 .5z"/></svg></a><a href="#" title="Twitter/X"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2H21.5l-7.53 8.61L23 22h-6.797l-5.327-6.96L4.78 22H1.52l8.04-9.19L1 2h6.914l4.818 6.36L18.244 2zm-1.198 18.15h1.885L7.02 3.75H5.024L17.046 20.15z"/></svg></a><a href="#" title="微信"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8.691 2C4.768 2 1.5 4.73 1.5 8.125c0 1.884 1.04 3.566 2.67 4.696a.5.5 0 0 1 .177.528l-.47 1.78a.5.5 0 0 0 .76.528l1.442-.962a.5.5 0 0 1 .442-.06 8.25 8.25 0 0 0 2.17.29c.145 0 .288-.008.43-.018a4.95 4.95 0 0 1-.213-1.45c0-2.88 2.83-5.21 6.32-5.21.248 0 .493.012.735.036C15.326 4.183 12.32 2 8.691 2zm2.805 4.75a.875.875 0 1 1 0 1.75.875.875 0 0 1 0-1.75zm-5.25 0a.875.875 0 1 1 0 1.75.875.875 0 0 1 0-1.75zM15.75 9.5c-3.176 0-5.75 2.14-5.75 4.777 0 1.44.854 2.72 2.19 3.593a.4.4 0 0 1 .142.423l-.39 1.384a.4.4 0 0 0 .607.42l1.126-.742a.4.4 0 0 1 .35-.052c.54.16 1.112.25 1.704.272.057 0 .112.002.168.002 3.176 0 5.75-2.14 5.75-4.777S18.926 9.5 15.75 9.5zm-2.188 3.125a.75.75 0 1 1 0 1.5.75.75 0 0 1 0-1.5zm4.376 0a.75.75 0 1 1 0 1.5.75.75 0 0 1 0-1.5z"/></svg></a></div></div><div class="foot-col"><h5>分类</h5><a href="#">学习考试</a><a href="#">求职就业</a><a href="#">写作文案</a><a href="#">设计创作</a><a href="#">编程开发</a></div><div class="foot-col"><h5>资源</h5><a href="#">今日精选</a><a href="#">新手上路</a><a href="#">AI副业指南</a><a href="#">避坑清单</a><a href="#">RSS 订阅</a></div><div class="foot-col"><h5>关于</h5><a href="#">关于我们</a><a href="#">提交工具</a><a href="#">广告合作</a><a href="#">联系我们</a><a href="#">隐私政策</a></div></div><div class="foot-bottom"><div>© 2026 AINav.pro · Made with ❤️ 给所有在焦虑中前行的年轻人</div><div style="display:flex;gap:16px;"><a href="#" style="color:var(--text-mute);text-decoration:none;">广告合作</a><a href="#" style="color:var(--text-mute);text-decoration:none;">友链</a></div></div></div></footer>
+<div class="toast" id="toast"><span class="ok">✓</span><span id="toastText">已复制到剪贴板</span></div>
