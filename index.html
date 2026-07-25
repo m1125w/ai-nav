@@ -3,29 +3,33 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI Nav · 年轻人的AI工具箱</title>
-<meta name="description" content="精选最懂年轻人的AI工具，拯救论文、求职、社恐、缺钱的你。">
+<title>树洞社 · 年轻人的匿名情绪出口</title>
+<meta name="description" content="搞钱、职场、考研、相亲、租房、副业……当代年轻人的痛点共鸣集散地。">
 <style>
   *{margin:0;padding:0;box-sizing:border-box}
   :root{
-    --bg:#0a0a0f;
-    --bg-soft:#12121a;
-    --surface:#181820;
-    --surface-hover:#1f1f2a;
-    --border:rgba(255,255,255,.06);
-    --border-strong:rgba(255,255,255,.1);
-    --text:#f5f5f7;
-    --text-soft:#a1a1aa;
-    --text-mute:#71717a;
-    --accent:#8b5cf6;
-    --accent-2:#06b6d4;
-    --accent-gradient:linear-gradient(135deg,#8b5cf6 0%,#06b6d4 100%);
-    --success:#10b981;
-    --warn:#f59e0b;
-    --radius:14px;
-    --radius-sm:10px;
-    --shadow:0 4px 24px rgba(0,0,0,.4);
-    --container:1200px;
+    --bg:#f5f1e8;
+    --bg-soft:#efe9db;
+    --surface:#ffffff;
+    --surface-hover:#fbf8f2;
+    --border:#e8e1d1;
+    --border-strong:#d6ccb5;
+    --text:#2d2a24;
+    --text-soft:#7a7265;
+    --text-mute:#a89f8d;
+    --accent:#2f6b4f;
+    --accent-hover:#265a42;
+    --accent-soft:#e6f0eb;
+    --warn:#b4531c;
+    --warn-soft:#fbeee3;
+    --hot:#c0392b;
+    --new:#2980b9;
+    --essence:#d4a017;
+    --radius:12px;
+    --radius-sm:8px;
+    --shadow:0 2px 12px rgba(45,42,36,.06);
+    --shadow-hover:0 8px 24px rgba(45,42,36,.1);
+    --container:1240px;
   }
   html{scroll-behavior:smooth}
   body{
@@ -34,428 +38,716 @@
     color:var(--text);
     line-height:1.6;
     -webkit-font-smoothing:antialiased;
-    overflow-x:hidden;
+    font-size:14.5px;
   }
-  body::before{
-    content:'';
-    position:fixed;
-    top:-20%;left:-10%;
-    width:600px;height:600px;
-    background:radial-gradient(circle,rgba(139,92,246,.12),transparent 70%);
-    pointer-events:none;
-    z-index:0;
-  }
-  body::after{
-    content:'';
-    position:fixed;
-    bottom:-20%;right:-10%;
-    width:600px;height:600px;
-    background:radial-gradient(circle,rgba(6,182,212,.1),transparent 70%);
-    pointer-events:none;
-    z-index:0;
-  }
-  .container{max-width:var(--container);margin:0 auto;padding:0 24px;position:relative;z-index:1}
+  .container{max-width:var(--container);margin:0 auto;padding:0 20px;position:relative}
 
-  /* ===== Header ===== */
+  /* ===== HEADER ===== */
   .header{
     position:sticky;top:0;z-index:100;
-    backdrop-filter:blur(20px);
-    -webkit-backdrop-filter:blur(20px);
-    background:rgba(10,10,15,.75);
+    background:rgba(245,241,232,.92);
+    backdrop-filter:blur(14px);
+    -webkit-backdrop-filter:blur(14px);
     border-bottom:1px solid var(--border);
   }
-  .nav{
-    display:flex;align-items:center;justify-content:space-between;
-    height:68px;
-  }
+  .nav{display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px}
   .logo{
     display:flex;align-items:center;gap:10px;
-    font-weight:700;font-size:18px;letter-spacing:-.02em;
+    font-weight:800;font-size:19px;letter-spacing:-.01em;
     text-decoration:none;color:var(--text);
+    flex-shrink:0;
   }
   .logo-mark{
-    width:32px;height:32px;border-radius:9px;
-    background:var(--accent-gradient);
+    width:36px;height:36px;border-radius:10px;
+    background:linear-gradient(135deg,#2f6b4f 0%,#3d8563 100%);
     display:flex;align-items:center;justify-content:center;
-    font-size:16px;font-weight:800;color:#fff;
-    box-shadow:0 4px 16px rgba(139,92,246,.35);
+    font-size:18px;font-weight:900;color:#fff;
+    box-shadow:0 4px 14px rgba(47,107,79,.25);
   }
-  .nav-links{display:flex;gap:28px;align-items:center}
-  .nav-links a{
-    color:var(--text-soft);text-decoration:none;font-size:14px;
-    transition:color .2s;
-  }
-  .nav-links a:hover{color:var(--text)}
-  .nav-btn{
-    padding:8px 18px;border-radius:999px;
-    background:var(--accent-gradient);
-lor:#fff!important;font-weight:600;font-size:13px;
-    border:none;cursor:pointer;
-    transition:transform .2s,box-shadow .2s;
-  }
-  .nav-btn:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(139,92,246,.35)}
+  .logo small{font-size:10px;color:var(--accent);font-weight:600;margin-left:2px}
 
-  /* ===== Hero ===== */
-  .hero{padding:72px 0 48px;position:relative}
-  .hero-tag{
-    display:inline-flex;align-items:center;gap:8px;
-    padding:6px 14px;border-radius:999px;
-    background:rgba(139,92,246,.1);
-    border:1px solid rgba(139,92,246,.2);
-    color:#c4b5fd;font-size:12.5px;font-weight:500;
-    margin-bottom:20px;
-  }
-  .hero-tag .dot{width:6px;height:6px;border-radius:50%;background:#10b981;box-shadow:0 0 12px #10b981}
-  .hero h1{
-    font-size:clamp(34px,5vw,56px);
-    font-weight:800;letter-spacing:-.03em;line-height:1.1;
-    margin-bottom:18px;
-  }
-  .hero h1 .grad{background:var(--accent-gradient);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-  .hero p{
-    font-size:17px;color:var(--text-soft);max-width:580px;
-    margin-bottom:32px;
-  }
-
-  /* ===== Search ===== */
-  .search-wrap{
-    max-width:680px;position:relative;margin-bottom:40px;
-  }
-  .search-box{
-    display:flex;align-items:center;
+  .nav-search{flex:1;max-width:460px;position:relative}
+  .nav-search input{
+    width:100%;padding:10px 14px 10px 40px;
+    border-radius:999px;border:1px solid var(--border);
     background:var(--surface);
-    border:1px solid var(--border-strong);
-    border-radius:999px;padding:6px 8px 6px 22px;
+    color:var(--text);font-size:14px;
+    font-family:inherit;outline:none;
     transition:border-color .2s,box-shadow .2s;
   }
-  .search-box:focus-within{
-    border-color:rgba(139,92,246,.4);
-    box-shadow:0 0 0 4px rgba(139,92,246,.1);
+  .nav-search input:focus{
+    border-color:var(--accent);
+    box-shadow:0 0 0 3px rgba(47,107,79,.1);
   }
-  .search-box svg{flex-shrink:0;color:var(--text-mute)}
-  .search-box input{
-    flex:1;border:none;outline:none;background:transparent;
-    color:var(--text);font-size:15px;padding:14px 12px;
-    font-family:inherit;
+  .nav-search svg{
+    position:absolute;left:14px;top:50%;transform:translateY(-50%);
+    color:var(--text-mute);
   }
-  .search-box input::placeholder{color:var(--text-mute)}
-  .search-btn{
-    padding:12px 26px;border-radius:999px;
-    background:var(--accent-gradient);color:#fff;
-    border:none;font-weight:600;font-size:14px;cursor:pointer;
-    font-family:inherit;transition:transform .15s;
-  }
-  .search-btn:hover{transform:scale(1.03)}
 
-  /* ===== Stats ===== */
-  .stats{
-    display:flex;gap:48px;flex-wrap:wrap;
-    padding:24px 0;border-top:1px solid var(--border);
-  }
-  .stat-item .num{font-size:28px;font-weight:800;letter-spacing:-.02em}
-  .stat-item .lbl{font-size:13px;color:var(--text-mute);margin-top:2px}
-
-  /* ===== Top Banner Ad ===== */
-  .ad-banner{
-    margin:36px 0;
-    border-radius:var(--radius);
-    background:linear-gradient(135deg,rgba(139,92,246,.12),rgba(6,182,212,.1));
-    border:1px dashed var(--border-strong);
-    padding:28px;
-    display:flex;align-items:center;justify-content:space-between;
-    gap:24px;flex-wrap:wrap;
-    position:relative;
-    overflow:hidden;
-  }  .ad-banner::before{
-    content:'广告位 · AD';
-    position:absolute;top:10px;right:14px;
-    font-size:10px;color:var(--text-mute);
-    letter-spacing:.08em;font-weight:600;
-  }
-  .ad-banner h3{font-size:18px;margin-bottom:4px;font-weight:700}
-  .ad-banner p{font-size:13.5px;color:var(--text-soft)}
-  .ad-banner .ad-cta{
-    padding:10px 22px;border-radius:999px;
-    background:var(--text);color:var(--bg);
-    font-weight:600;font-size:13.5px;text-decoration:none;
-    white-space:nowrap;transition:transform .15s;
-  }
-  .ad-banner .ad-cta:hover{transform:translateY(-1px)}
-
-  /* ===== Category Filter ===== */
-  .section{padding:40px 0}
-  .section-head{
-    display:flex;align-items:flex-end;justify-content:space-between;
-    margin-bottom:28px;flex-wrap:wrap;gap:16px;
-  }
-  .section-head h2{
-    font-size:26px;font-weight:800;letter-spacing:-.02em;
-  }
-  .section-head h2 .sub{
-    display:block;font-size:13px;font-weight:500;
-    color:var(--text-mute);margin-top:6px;letter-spacing:0;
-  }
-  .cat-wrap{
-    display:flex;gap:10px;overflow-x:auto;padding-bottom:4px;
-    scrollbar-width:none;
-    -ms-overflow-style:none;
-    margin-bottom:28px;
-  }
-  .cat-wrap::-webkit-scrollbar{display:none}
-  .cat-chip{
-    flex-shrink:0;
-    padding:10px 18px;border-radius:999px;
-    background:var(--surface);
-    border:1px solid var(--border);
-    color:var(--text-soft);font-size:13.5px;font-weight:500;
-    cursor:pointer;transition:all .2s;
-    white-space:nowrap;
-    display:flex;align-items:center;gap:7px;
-  }
-  .cat-chip:hover{background:var(--surface-hover);color:var(--text)}
-  .cat-chip.active{
-    background:var(--accent-gradient);
-    border-color:transparent;color:#fff;
-    box-shadow:0 4px 16px rgba(139,92,246,.3);
-  }
-  .cat-chip .emoji{font-size:15px}
-
-  /* ===== Tool Grid ===== */
-  .tool-grid{
-    display:grid;gap:16px;
-    grid-template-columns:repeat(auto-fill,minmax(320px,1fr));
-  }
-  .tool-card{
-    background:var(--surface);
-    border:1px solid var(--border);
-    border-radius:var(--radius);
-    padding:22px;
-    transition:all .25s cubic-bezier(.4,0,.2,1);
-    position:relative;
-    cursor:pointer;
-    display:flex;flex-direction:column;gap:14px;
-  }
-  .tool-card:hover{
-    background:var(--surface-hover);
-    border-color:rgba(139,92,246,.25);
-    transform:translateY(-3px);
-    box-shadow:var(--shadow);
-  }
-  .tool-top{display:flex;gap:14px;align-items:flex-start}
-  .tool-icon{
-    width:48px;height:48px;border-radius:12px;
-    display:flex;align-items:center;justify-content:center;
-    font-size:24px;flex-shrink:0;
-    background:linear-gradient(135deg,rgba(139,92,246,.18),rgba(6,182,212,.14));
-    border:1px solid var(--border);
-  }
-  .tool-meta{flex:1;min-width:0}
-  .tool-name{
-    font-size:16px;font-weight:700;margin-bottom:3px;
+  .nav-actions{display:flex;align-items:center;gap:10px;flex-shrink:0}
+  .nav-user{
     display:flex;align-items:center;gap:8px;
+    padding:6px 12px;border-radius:999px;
+    border:1px solid var(--border);background:var(--surface);
+    cursor:pointer;transition:all .2s;
   }
-  .tool-badge{
-    font-size:10px;padding:2px 7px;border-radius:5px;
-    background:rgba(16,185,129,.15);color:#34d399;
-    font-weight:600;letter-spacing:.02em;
+  .nav-user:hover{border-color:var(--border-strong)}
+  .avatar{
+    width:26px;height:26px;border-radius:50%;
+    background:linear-gradient(135deg,#a89f8d,#7a7265);
+    display:flex;align-items:center;justify-content:center;
+    color:#fff;font-size:12px;font-weight:700;
   }
-  .tool-badge.hot{background:rgba(239,68,68,.15);color:#f87171}
-  .tool-badge.new{background:rgba(245,158,11,.15);color:#fbbf24}
-  .tool-desc{
-    font-size:13.5px;color:var(--text-soft);line-height:1.5;
+  .btn-post{
+    padding:10px 20px;border-radius:999px;
+    background:var(--accent);color:#fff;
+    border:none;font-weight:700;font-size:14px;cursor:pointer;
+    font-family:inherit;transition:all .2s;
+    display:flex;align-items:center;gap:6px;
   }
-  .tool-tags{display:flex;flex-wrap:wrap;gap:6px}
-  .tool-tag{
-    font-size:11.5px;padding:4px 10px;border-radius:6px;
-    background:rgba(255,255,255,.04);color:var(--text-mute);
-    border:1px solid var(--border);
+  .btn-post:hover{background:var(--accent-hover);transform:translateY(-1px);box-shadow:0 6px 18px rgba(47,107,79,.25)}
+
+  /* ===== CATEGORY BAR ===== */
+  .cat-bar{
+    background:var(--surface);
+    border-bottom:1px solid var(--border);
+    padding:0;
+    position:sticky;top:64px;z-index:99;
   }
-  .tool-foot{
+  .cat-row{
+    display:flex;gap:4px;overflow-x:auto;
+    padding:10px 0;scrollbar-width:none;
+    -ms-overflow-style:none;
+  }
+  .cat-row::-webkit-scrollbar{display:none}
+  .cat-tab{
+    flex-shrink:0;
+    padding:8px 16px;border-radius:999px;
+    font-size:14px;font-weight:500;color:var(--text-soft);
+    cursor:pointer;border:1px solid transparent;
+    transition:all .18s;
+    display:flex;align-items:center;gap:6px;
+    white-space:nowrap;
+  }
+  .cat-tab:hover{background:var(--bg-soft);color:var(--text)}
+  .cat-tab.active{
+    background:var(--accent-soft);
+    border-color:rgba(47,107,79,.15);
+    color:var(--accent);font-weight:700;
+  }
+
+  /* ===== TOP AD BANNER ===== */
+  .top-ad{
+    margin:22px 0 18px;
+    background:linear-gradient(135deg,#fff8ef,#fef3e2);
+    border:1px dashed var(--border-strong);
+    border-radius:var(--radius);
+    padding:22px 28px;
     display:flex;align-items:center;justify-content:space-between;
-    padding-top:10px;border-top:1px solid var(--border);
-    margin-top:auto;
+    gap:20px;flex-wrap:wrap;position:relative;overflow:hidden;
   }
-  .tool-price{
-    font-size:12.5px;color:var(--text-mute);
-    display:flex;align-items:center;gap:5px;
+  .top-ad::before{
+    content:'广告 · AD';position:absolute;top:10px;right:14px;
+    font-size:10px;color:var(--text-mute);font-weight:700;letter-spacing:.1em;
+    padding:2px 8px;border-radius:4px;background:rgba(180,83,28,.08);
   }
-  .tool-price .free{color:var(--success);font-weight:600}
-  .tool-price .paid{color:var(--warn);font-weight:600}
-  .tool-go{
-    padding:7px 14px;border-radius:8px;
-    background:rgba(139,92,246,.12);
-    color:#c4b5fd;font-size:12.5px;font-weight:600;
-    text-decoration:none;
-    display:flex;align-items:center;gap:4px;
-    transition:all .2s;
+  .ad-content h3{font-size:17px;font-weight:800;margin-bottom:4px;color:var(--text)}
+  .ad-content h3 em{color:var(--warn);font-style:normal}
+  .ad-content p{font-size:13.5px;color:var(--text-soft)}
+  .ad-cta{
+    padding:10px 22px;border-radius:999px;
+    background:linear-gradient(135deg,#b4531c,#d3702e);
+    color:#fff;text-decoration:none;font-weight:700;font-size:13.5px;
+    white-space:nowrap;transition:transform .18s;
   }
-  .tool-go:hover{background:var(--accent-gradient);color:#fff}
+  .ad-cta:hover{transform:translateY(-1px)}
 
-  /* ===== Inline Native Ad ===== */
-  .native-ad{
-    background:linear-gradient(135deg,rgba(245,158,11,.08),rgba(239,68,68,.08));
-    border:1px solid rgba(245,158,11,.2);
-    position:relative;
-  }
-  .native-ad::after{
-    content:'赞助 · SPONSORED';
-    position:absolute;top:14px;right:16px;
-    font-size:9.5px;color:var(--text-mute);
-    letter-spacing:.1em;font-weight:700;
-    padding:3px 8px;border-radius:4px;
-    background:rgba(255,255,255,.03);
-    border:1px solid var(--border);
-  }
-  .native-ad .tool-icon{
-    background:linear-gradient(135deg,rgba(245,158,11,.2),rgba(239,68,68,.18));
-  }
-
-  /* ===== Pain Points Section ===== */
-  .pain-section{padding:60px 0;margin-top:20px}
-  .pain-grid{
-    display:grid;gap:16px;
-    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-    margin-top:28px;
-  }
-  .pain-card{
-    padding:24px;border-radius:var(--radius);
-    background:var(--surface);border:1px solid var(--border);
-    transition:all .25s;
-  }
-  .pain-card:hover{border-color:rgba(139,92,246,.3);transform:translateY(-2px)}
-  .pain-emoji{font-size:32px;margin-bottom:12px}
-  .pain-card h4{font-size:16px;margin-bottom:6px;font-weight:700}
-  .pain-card p{font-size:13px;color:var(--text-soft)}
-
-  /* ===== Sidebar Layout for wider screens ===== */
+  /* ===== MAIN LAYOUT ===== */
   .main-layout{
-    display:grid;gap:32px;
+    display:grid;gap:22px;
     grid-template-columns:1fr 300px;
+    padding-bottom:40px;
   }
   @media(max-width:960px){.main-layout{grid-template-columns:1fr}}
 
-  /* ===== Sidebar Ad ===== */
-  .sidebar-sticky{position:sticky;top:92px;align-self:start;display:flex;flex-direction:column;gap:20px}
+  /* ===== LEFT: FEED ===== */
+  .feed-header{
+    display:flex;align-items:center;justify-content:space-between;
+    margin-bottom:14px;flex-wrap:wrap;gap:10px;
+  }
+  .sort-tabs{display:flex;gap:4px;background:var(--surface);padding:4px;border-radius:999px;border:1px solid var(--border)}
+  .sort-tab{
+    padding:6px 14px;border-radius:999px;
+    font-size:13px;font-weight:600;color:var(--text-soft);
+    cursor:pointer;transition:all .15s;
+  }
+  .sort-tab:hover{color:var(--text)}
+  .sort-tab.active{background:var(--accent);color:#fff}
+  .feed-stats{font-size:12.5px;color:var(--text-mute)}
+  .feed-stats b{color:var(--accent);font-weight:700}
+
+  /* ===== POST CARD ===== */
+  .post-list{display:flex;flex-direction:column;gap:12px}
+  .post-card{
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    padding:18px 20px;
+    transition:all .22s cubic-bezier(.4,0,.2,1);
+    cursor:pointer;
+    position:relative;
+  }
+  .post-card:hover{
+    border-color:var(--accent);
+    box-shadow:var(--shadow-hover);
+    transform:translateY(-2px);
+  }
+  .post-top{display:flex;align-items:center;gap:10px;margin-bottom:10px;flex-wrap:wrap}
+  .post-tag{
+    padding:3px 9px;border-radius:5px;
+    font-size:11.5px;font-weight:700;
+    background:var(--accent-soft);color:var(--accent);
+  }
+  .post-tag.hot{background:rgba(192,57,43,.1);color:var(--hot)}
+  .post-tag.essence{background:rgba(212,160,23,.15);color:var(--essence)}
+  .post-tag.new{background:rgba(41,128,185,.1);color:var(--new)}
+  .post-author{
+    display:flex;align-items:center;gap:7px;
+    font-size:12.5px;color:var(--text-soft);
+  }
+  .post-author .avatar{width:20px;height:20px;font-size:10px}
+  .post-anon{opacity:.7}
+  .post-dot{width:3px;height:3px;border-radius:50%;background:var(--text-mute)}
+  .post-time{font-size:12.5px;color:var(--text-mute)}
+  .post-title{
+    font-size:17px;font-weight:800;line-height:1.4;
+    margin-bottom:8px;color:var(--text);
+    transition:color .15s;
+  }
+  .post-card:hover .post-title{color:var(--accent)}
+  .post-excerpt{
+    font-size:14px;color:var(--text-soft);line-height:1.65;
+    display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;
+    overflow:hidden;
+    margin-bottom:14px;
+  }
+  .post-bottom{
+    display:flex;align-items:center;justify-content:space-between;
+    padding-top:12px;border-top:1px solid var(--border);
+  }
+  .post-stats{display:flex;gap:18px}
+  .stat{
+    display:flex;align-items:center;gap:5px;
+    font-size:13px;color:var(--text-mute);
+    transition:color .15s;
+  }
+  .stat:hover{color:var(--accent)}
+  .stat .icn{font-size:14px}
+  .stat.liked{color:var(--warn)}
+  .post-images{
+    display:flex;gap:8px;margin-bottom:14px;overflow:hidden;
+  }
+  .post-img{
+    flex:1;aspect-ratio:4/3;max-height:120px;
+    border-radius:8px;background-size:cover;background-position:center;
+    border:1px solid var(--border);
+    background-color:var(--bg-soft);
+  }
+
+  /* ===== NATIVE AD IN FEED ===== */
+  .post-card.native-ad{
+    background:linear-gradient(135deg,#fff8ef,#fffaf4);
+    border-color:rgba(180,83,28,.25);
+  }
+  .post-card.native-ad::after{
+    content:'赞助 · SPONSORED';position:absolute;top:14px;right:18px;
+    font-size:10px;color:var(--warn);font-weight:800;letter-spacing:.1em;
+    padding:3px 9px;border-radius:5px;
+    background:rgba(180,83,28,.1);
+    border:1px solid rgba(180,83,28,.15);
+  }
+
+  /* ===== BOTTOM AD ===== */
+  .bottom-ad{
+    margin-top:20px;
+    background:linear-gradient(135deg,#eff6f1,#eef6f3);
+    border:1px dashed rgba(47,107,79,.3);
+    border-radius:var(--radius);
+    padding:22px 28px;
+    display:flex;align-items:center;justify-content:space-between;
+    gap:20px;flex-wrap:wrap;position:relative;
+  }
+  .bottom-ad::before{
+    content:'广告 · AD';position:absolute;top:10px;right:14px;
+    font-size:10px;color:var(--accent);font-weight:700;letter-spacing:.1em;
+  }
+  .bottom-ad h3{font-size:17px;font-weight:800;margin-bottom:4px}
+  .bottom-ad p{font-size:13.5px;color:var(--text-soft)}
+  .bottom-ad .ad-cta{background:linear-gradient(135deg,#2f6b4f,#3d8563)}
+
+  /* ===== SIDEBAR ===== */
+  .sidebar{display:flex;flex-direction:column;gap:16px;position:sticky;top:128px;align-self:start}
+
+  .side-card{
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    padding:18px;
+  }
+  .side-title{
+    display:flex;align-items:center;justify-content:space-between;
+    margin-bottom:14px;
+  }
+  .side-title h4{font-size:15px;font-weight:800;display:flex;align-items:center;gap:6px}
+  .side-title h4 .icn{font-size:16px}
+  .side-title .more{font-size:12px;color:var(--text-mute);text-decoration:none;cursor:pointer}
+  .side-title .more:hover{color:var(--accent)}
+
+  /* Side Ads */
   .side-ad{
     border-radius:var(--radius);
     border:1px dashed var(--border-strong);
-    padding:24px;
-    background:linear-gradient(160deg,rgba(6,182,212,.08),rgba(139,92,246,.08));
+    padding:20px;
+    background:linear-gradient(160deg,#fff5eb,#fefaf4);
     position:relative;
-    min-height:260px;
-    display:flex;flex-direction:column;justify-content:center;align-items:center;
+    min-height:220px;
+    display:flex;flex-direction:column;justify-content:center;
     text-align:center;
   }
   .side-ad::before{
     content:'侧边广告';position:absolute;top:10px;left:12px;
-    font-size:10px;color:var(--text-mute);letter-spacing:.1em;font-weight:600;
+    font-size:10px;color:var(--text-mute);font-weight:700;letter-spacing:.1em;
   }
-  .side-ad h4{font-size:16px;margin-bottom:6px;font-weight:700}
-  .side-ad p{font-size:12.5px;color:var(--text-soft);margin-bottom:16px}
-  .side-ad-cta{
-    padding:9px 20px;border-radius:999px;background:var(--text);color:var(--bg);
-    text-decoration:none;font-size:12.5px;font-weight:600;
+  .side-ad.ad-green{background:linear-gradient(160deg,#eff6f1,#f0f8f4)}
+  .side-ico{font-size:36px;margin-bottom:10px}
+  .side-ad h4{font-size:15.5px;font-weight:800;margin-bottom:5px}
+  .side-ad p{font-size:12.5px;color:var(--text-soft);margin-bottom:14px;line-height:1.6}
+  .side-ad-btn{
+    padding:9px 20px;border-radius:999px;
+    background:var(--warn);color:#fff;
+    text-decoration:none;font-weight:700;font-size:13px;
+    display:inline-block;margin:0 auto;
+    transition:transform .18s;
+  }
+  .side-ad-btn:hover{transform:translateY(-1px)}
+  .ad-green .side-ad-btn{background:var(--accent)}
+
+  /* Hot List */
+  .hot-list{display:flex;flex-direction:column;gap:4px}
+  .hot-item{
+    display:flex;align-items:flex-start;gap:10px;
+    padding:8px 8px;border-radius:8px;
+    cursor:pointer;transition:background .15s;
+  }
+  .hot-item:hover{background:var(--bg-soft)}
+  .hot-rank{
+    width:20px;height:20px;border-radius:5px;flex-shrink:0;
+    display:flex;align-items:center;justify-content:center;
+    font-size:11.5px;font-weight:900;color:#fff;
+    background:linear-gradient(135deg,#c0392b,#e74c3c);
+    margin-top:1px;
+  }
+  .hot-rank.r4{background:linear-gradient(135deg,#e67e22,#f39c12)}
+  .hot-rank.r5{background:linear-gradient(135deg,#f39c12,#f1c40f)}
+  .hot-rank.r6{background:var(--text-mute)}
+  .hot-body{flex:1;min-width:0}
+  .hot-title{
+    font-size:13px;font-weight:600;color:var(--text);line-height:1.45;
+    overflow:hidden;text-overflow:ellipsis;
+    display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;
+  }
+  .hot-heat{font-size:11px;color:var(--text-mute);margin-top:3px}
+  .hot-heat b{color:var(--hot);font-weight:700}
+
+  /* Hot Boards */
+  .board-list{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .board-item{
+    padding:10px 12px;border-radius:8px;
+    background:var(--bg-soft);
+    cursor:pointer;transition:all .18s;
+    text-decoration:none;color:inherit;
+    display:flex;align-items:center;gap:8px;
+  }
+  .board-item:hover{background:var(--accent-soft);transform:translateY(-1px)}
+  .board-icn{font-size:18px}
+  .board-info{flex:1;min-width:0}
+  .board-name{font-size:12.5px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .board-count{font-size:10.5px;color:var(--text-mute)}
+
+  /* Active Users */
+  .user-list{display:flex;flex-direction:column;gap:10px}
+  .user-item{
+    display:flex;align-items:center;gap:10px;
+    padding:6px;border-radius:8px;cursor:pointer;
+    transition:background .15s;
+  }
+  .user-item:hover{background:var(--bg-soft)}
+  .user-item .avatar{width:34px;height:34px;font-size:13px}
+  .user-info{flex:1;min-width:0}
+  .user-name{font-size:13px;font-weight:700;display:flex;align-items:center;gap:5px}
+  .user-name .vip{font-size:9px;padding:1px 5px;border-radius:4px;background:linear-gradient(135deg,#d4a017,#e9c94c);color:#fff}
+  .user-bio{font-size:11.5px;color:var(--text-mute);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .user-follow{
+    padding:5px 12px;border-radius:999px;
+    border:1px solid var(--accent);color:var(--accent);
+    font-size:12px;font-weight:700;background:transparent;
+    cursor:pointer;transition:all .15s;flex-shrink:0;
+  }
+  .user-follow:hover{background:var(--accent);color:#fff}
+  .user-follow.done{background:var(--bg-soft);color:var(--text-mute);border-color:var(--border)}
+
+  /* ===== POST DETAIL VIEW ===== */
+  .detail-view{display:none}
+  .detail-view.show{display:block}
+  .feed-view.hide{display:none}
+
+  .back-btn{
+    display:inline-flex;align-items:center;gap:6px;
+    padding:8px 16px;border-radius:999px;
+    background:var(--surface);border:1px solid var(--border);
+    color:var(--text-soft);font-size:13.5px;font-weight:600;
+    cursor:pointer;margin-bottom:14px;
+    transition:all .18s;
+  }
+  .back-btn:hover{color:var(--accent);border-color:var(--accent);background:var(--accent-soft)}
+
+  .detail-card{
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    padding:28px 30px;
+    margin-bottom:18px;
+  }
+  .detail-header{margin-bottom:18px}
+  .detail-tags{display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap}
+  .detail-title{font-size:24px;font-weight:800;line-height:1.35;margin-bottom:14px;letter-spacing:-.01em}
+  .detail-meta{
+    display:flex;align-items:center;gap:12px;flex-wrap:wrap;
+    padding:14px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);
+  }
+  .detail-author{display:flex;align-items:center;gap:10px}
+  .detail-author .avatar{width:36px;height:36px;font-size:14px}
+  .author-name{font-weight:700;font-size:14px}
+  .author-bio{font-size:12px;color:var(--text-mute)}
+  .detail-actions{display:flex;gap:10px;margin-left:auto}
+  .act-btn{
+    padding:6px 14px;border-radius:8px;
+    border:1px solid var(--border);background:var(--bg-soft);
+    color:var(--text-soft);font-size:12.5px;font-weight:600;
+    cursor:pointer;transition:all .15s;
+    display:flex;align-items:center;gap:5px;
+  }
+  .act-btn:hover{color:var(--accent);border-color:var(--accent)}
+  .act-btn.liked{background:var(--warn-soft);color:var(--warn);border-color:rgba(180,83,28,.2)}
+  .act-btn.collected{background:var(--essence);color:#fff;border-color:var(--essence)}
+
+  .detail-body{padding:20px 0;font-size:15.5px;line-height:1.85;color:var(--text)}
+  .detail-body p{margin-bottom:14px}
+  .detail-body p:last-child{margin-bottom:0}
+  .detail-body blockquote{
+    padding:14px 18px;border-left:3px solid var(--accent);
+    background:var(--bg-soft);border-radius:0 8px 8px 0;
+    color:var(--text-soft);margin:16px 0;font-size:14.5px;
   }
 
-  /* ===== Submit CTA ===== */
-  .submit-cta{
-    margin:60px 0;
-    padding:48px 36px;
-    border-radius:20px;
-    background:
-      radial-gradient(ellipse at top left,rgba(139,92,246,.2),transparent 50%),
-      radial-gradient(ellipse at bottom right,rgba(6,182,212,.18),transparent 50%),
-      var(--surface);
-    border:1px solid var(--border-strong);
-    display:flex;align-items:center;justify-content:space-between;
-    gap:32px;flex-wrap:wrap;
-  }
-  .submit-cta h3{font-size:24px;font-weight:800;margin-bottom:8px;letter-spacing:-.02em}
-  .submit-cta p{font-size:14.5px;color:var(--text-soft);max-width:480px}
-  .submit-btn{
-    padding:14px 30px;border-radius:999px;
-    background:var(--accent-gradient);color:#fff;
-    text-decoration:none;font-weight:700;font-size:15px;
-    box-shadow:0 10px 30px rgba(139,92,246,.3);
-    transition:transform .2s;
-    white-space:nowrap;
-  }
-  .submit-btn:hover{transform:translateY(-2px)}
-
-  /* ===== Footer ===== */
-  .footer{
-    padding:48px 0 36px;
+  .detail-stats-bar{
+    display:flex;gap:18px;padding:14px 0;margin-top:16px;
     border-top:1px solid var(--border);
-    margin-top:40px;
+  }
+  .big-stat{
+    display:flex;align-items:center;gap:7px;
+    font-size:14px;color:var(--text-soft);cursor:pointer;
+    padding:8px 14px;border-radius:999px;transition:all .15s;
+  }
+  .big-stat:hover{background:var(--bg-soft)}
+  .big-stat b{color:var(--text);font-weight:700}
+  .big-stat.liked{background:var(--warn-soft);color:var(--warn)}
+  .big-stat.liked b{color:var(--warn)}
+
+  /* ===== COMMENTS (楼中楼) ===== */
+  .comments-card{
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    padding:24px 28px;
+  }
+  .comments-header{
+    display:flex;align-items:center;justify-content:space-between;
+    margin-bottom:18px;
+    padding-bottom:14px;border-bottom:1px solid var(--border);
+  }
+  .comments-header h3{font-size:17px;font-weight:800;display:flex;align-items:center;gap:8px}
+  .comments-header h3 .count{color:var(--accent)}
+  .comment-sort{display:flex;gap:4px}
+  .comment-sort button{
+    padding:5px 12px;border-radius:999px;border:none;
+    background:transparent;color:var(--text-mute);
+    font-size:12.5px;font-weight:600;cursor:pointer;transition:all .15s;
+  }
+  .comment-sort button.active{background:var(--accent-soft);color:var(--accent)}
+
+  .comment-input-wrap{
+    display:flex;gap:12px;margin-bottom:22px;
+    padding:14px;background:var(--bg-soft);border-radius:var(--radius-sm);
+  }
+  .comment-input-wrap .avatar{width:36px;height:36px;flex-shrink:0}
+  .comment-input-body{flex:1;display:flex;flex-direction:column;gap:10px}
+  .comment-input-body textarea{
+    width:100%;min-height:68px;padding:10px 12px;
+    border:1px solid var(--border);border-radius:8px;
+    background:#fff;font-family:inherit;font-size:14px;
+    color:var(--text);resize:vertical;outline:none;
+    transition:border-color .15s;
+  }
+  .comment-input-body textarea:focus{border-color:var(--accent)}
+  .comment-input-actions{display:flex;justify-content:space-between;align-items:center}
+  .comment-tools{display:flex;gap:6px;color:var(--text-mute);font-size:16px}
+  .comment-tools span{cursor:pointer;padding:4px 6px;border-radius:5px;transition:all .15s}
+  .comment-tools span:hover{background:var(--border);color:var(--text)}
+  .btn-submit-comment{
+    padding:8px 20px;border-radius:999px;border:none;
+    background:var(--accent);color:#fff;font-weight:700;font-size:13.5px;
+    cursor:pointer;transition:background .15s;
+  }
+  .btn-submit-comment:hover{background:var(--accent-hover)}
+
+  .comment-list{display:flex;flex-direction:column;gap:0}
+  .comment{
+    display:flex;gap:12px;padding:16px 0;
+    border-bottom:1px solid var(--border);
+  }
+  .comment:last-child{border-bottom:none}
+  .comment .avatar{width:38px;height:38px;font-size:13px;flex-shrink:0}
+  .comment-body{flex:1;min-width:0}
+  .comment-head{display:flex;align-items:center;gap:8px;margin-bottom:5px;flex-wrap:wrap}
+  .comment-name{font-size:13.5px;font-weight:700}
+  .comment-name.op{
+    padding:2px 7px;border-radius:4px;
+    background:var(--accent);color:#fff;font-size:10.5px;
+  }
+  .comment-floor{font-size:11.5px;color:var(--text-mute);font-weight:600}
+  .comment-time{font-size:11.5px;color:var(--text-mute)}
+  .comment-text{font-size:14px;line-height:1.75;color:var(--text);margin-bottom:8px}
+  .comment-actions{display:flex;gap:14px}
+  .comment-act{
+    font-size:12px;color:var(--text-mute);cursor:pointer;
+    display:flex;align-items:center;gap:4px;transition:color .15s;
+  }
+  .comment-act:hover{color:var(--accent)}
+  .comment-act.liked{color:var(--warn)}
+  .comment-act.reply:hover{color:var(--warn)}
+
+  .reply-section{
+    margin-top:12px;padding:14px 16px;
+    background:var(--bg-soft);border-radius:8px;
+  }
+  .reply{
+    display:flex;gap:10px;padding:10px 0;
+    border-bottom:1px dashed var(--border);
+  }
+  .reply:last-child{border-bottom:none;padding-bottom:0}
+  .reply:first-child{padding-top:0}
+  .reply .avatar{width:28px;height:28px;font-size:11px}
+  .reply-body{flex:1;font-size:13px;line-height:1.7}
+  .reply-head{display:flex;align-items:center;gap:7px;margin-bottom:3px}
+  .reply-name{font-weight:700;font-size:12.5px}
+  .reply-name.op{
+    padding:1px 6px;border-radius:3px;
+    background:var(--accent);color:#fff;font-size:10px;
+  }
+  .reply-to{color:var(--text-mute);font-size:12px}
+  .reply-time{color:var(--text-mute);font-size:11px;margin-left:auto;flex-shrink:0}
+  .reply-actions{margin-top:5px;display:flex;gap:12px}
+  .reply-act{font-size:11px;color:var(--text-mute);cursor:pointer;display:flex;align-items:center;gap:3px}
+  .reply-act:hover{color:var(--accent)}
+  .reply-act.liked{color:var(--warn)}
+
+  .reply-input{
+    margin-top:10px;display:flex;gap:8px;align-items:flex-start;
+  }
+  .reply-input textarea{
+    flex:1;min-height:38px;padding:8px 10px;
+    border:1px solid var(--border);border-radius:6px;
+    background:#fff;font-family:inherit;font-size:12.5px;
+    resize:none;outline:none;
+  }
+  .reply-input textarea:focus{border-color:var(--accent)}
+  .reply-input button{
+    padding:7px 14px;border-radius:6px;border:none;
+    background:var(--accent);color:#fff;font-weight:700;font-size:12px;
+    cursor:pointer;white-space:nowrap;flex-shrink:0;
+  }
+  .toggle-replies{
+    margin-top:10px;font-size:12px;color:var(--accent);
+    font-weight:600;cursor:pointer;
+    display:inline-flex;align-items:center;gap:4px;
+  }
+
+  /* Comment Area Ad */
+  .comment-ad{
+    margin:20px 0;
+    padding:18px 22px;
+    background:linear-gradient(135deg,#fff5eb,#fff3e5);
+    border:1px dashed rgba(180,83,28,.3);
+    border-radius:var(--radius-sm);
+    display:flex;align-items:center;justify-content:space-between;
+    gap:16px;flex-wrap:wrap;position:relative;
+  }
+  .comment-ad::before{
+    content:'评论区广告';position:absolute;top:8px;right:12px;
+    font-size:10px;color:var(--warn);font-weight:700;letter-spacing:.08em;
+  }
+  .comment-ad h5{font-size:14.5px;font-weight:800;margin-bottom:3px}
+  .comment-ad p{font-size:12.5px;color:var(--text-soft)}
+  .comment-ad .ad-cta{padding:8px 16px;font-size:12.5px}
+
+  /* ===== MODAL: 发帖 ===== */
+  .modal-mask{
+    position:fixed;inset:0;z-index:999;
+    background:rgba(45,42,36,.55);
+    backdrop-filter:blur(4px);
+    display:none;align-items:center;justify-content:center;
+    padding:20px;
+  }
+  .modal-mask.show{display:flex}
+  .modal{
+    background:var(--surface);
+    border-radius:16px;
+    width:100%;max-width:560px;
+    max-height:90vh;overflow-y:auto;
+    box-shadow:0 20px 60px rgba(0,0,0,.25);
+    animation:modalIn .22s ease;
+  }
+  @keyframes modalIn{from{opacity:0;transform:translateY(16px) scale(.98)}to{opacity:1;transform:none}}
+  .modal-head{
+    padding:18px 22px;display:flex;align-items:center;justify-content:space-between;
+    border-bottom:1px solid var(--border);
+  }
+  .modal-head h3{font-size:18px;font-weight:800;display:flex;align-items:center;gap:8px}
+  .modal-close{
+    width:32px;height:32px;border-radius:50%;
+    border:none;background:var(--bg-soft);color:var(--text-soft);
+    cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;
+    transition:all .15s;
+  }
+  .modal-close:hover{background:var(--border-strong);color:var(--text)}
+  .modal-body{padding:22px}
+  .form-group{margin-bottom:16px}
+  .form-group label{
+    display:block;font-size:13px;font-weight:700;margin-bottom:7px;color:var(--text);
+  }
+  .form-group label .req{color:var(--hot)}
+  .form-group select,.form-group input[type=text]{
+    width:100%;padding:10px 14px;
+    border:1px solid var(--border);border-radius:8px;
+    background:#fff;font-family:inherit;font-size:14px;color:var(--text);
+    outline:none;transition:border-color .15s;
+  }
+  .form-group select:focus,.form-group input[type=text]:focus{border-color:var(--accent)}
+  .form-group textarea{
+    width:100%;min-height:140px;padding:10px 14px;
+    border:1px solid var(--border);border-radius:8px;
+    background:#fff;font-family:inherit;font-size:14px;
+    color:var(--text);resize:vertical;outline:none;line-height:1.7;
+  }
+  .form-group textarea:focus{border-color:var(--accent)}
+  .form-tip{font-size:12px;color:var(--text-mute);margin-top:6px}
+  .anon-checkbox{display:flex;align-items:center;gap:8px;font-size:13.5px;color:var(--text-soft);cursor:pointer}
+  .anon-checkbox input{width:16px;height:16px;accent-color:var(--accent)}
+  .modal-foot{
+    padding:14px 22px;border-top:1px solid var(--border);
+    display:flex;justify-content:space-between;align-items:center;gap:12px;
+  }
+  .btn-cancel{
+    padding:10px 20px;border-radius:999px;
+    border:1px solid var(--border);background:var(--bg-soft);
+    color:var(--text-soft);font-weight:600;font-size:14px;
+    cursor:pointer;transition:all .15s;
+  }
+  .btn-cancel:hover{border-color:var(--border-strong);color:var(--text)}
+  .btn-submit-post{
+    padding:10px 24px;border-radius:999px;border:none;
+    background:var(--accent);color:#fff;font-weight:700;font-size:14px;
+    cursor:pointer;transition:all .15s;
+  }
+  .btn-submit-post:hover{background:var(--accent-hover)}
+
+  /* ===== TOAST ===== */
+  .toast{
+    position:fixed;bottom:36px;left:50%;transform:translateX(-50%) translateY(120px);
+    padding:12px 22px;border-radius:12px;
+    background:var(--text);color:#fff;
+    font-size:13.5px;font-weight:600;
+    box-shadow:0 8px 30px rgba(0,0,0,.25);
+    transition:transform .35s cubic-bezier(.4,0,.2,1);
+    z-index:1000;display:flex;align-items:center;gap:7px;
+  }
+  .toast.show{transform:translateX(-50%) translateY(0)}
+  .toast .ok{color:#6ee7b7;font-weight:900}
+
+  /* ===== FOOTER ===== */
+  .footer{
+    padding:40px 0 30px;
+    border-top:1px solid var(--border);
+    margin-top:30px;background:var(--surface);
   }
   .foot-grid{
-    display:grid;gap:40px;
-    grid-template-columns:2fr 1fr 1fr 1fr;
-    margin-bottom:36px;
+    display:grid;gap:32px;
+    grid-template-columns:1.6fr 1fr 1fr 1fr;
+    margin-bottom:28px;
   }
-  @media(max-width:720px){.foot-grid{grid-template-columns:1fr 1fr;gap:28px}}
-  .foot-brand p{font-size:13px;color:var(--text-mute);margin-top:12px;max-width:320px}
-  .foot-col h5{font-size:13px;font-weight:700;margin-bottom:14px;color:var(--text)}
+  @media(max-width:720px){.foot-grid{grid-template-columns:1fr 1fr;gap:24px}}
+  .foot-brand p{font-size:13px;color:var(--text-mute);margin-top:12px;max-width:340px;line-height:1.75}
+  .foot-col h5{font-size:13.5px;font-weight:800;margin-bottom:14px;color:var(--text)}
   .foot-col a{
     display:block;font-size:13px;color:var(--text-soft);
-    text-decoration:none;padding:5px 0;transition:color .2s;
+    text-decoration:none;padding:5px 0;transition:color .15s;
   }
-  .foot-col a:hover{color:var(--text)}
+  .foot-col a:hover{color:var(--accent)}
   .foot-bottom{
-    padding-top:24px;border-top:1px solid var(--border);
+    padding-top:22px;border-top:1px solid var(--border);
     display:flex;justify-content:space-between;align-items:center;
     flex-wrap:wrap;gap:12px;
     font-size:12px;color:var(--text-mute);
   }
-  .socials{display:flex;gap:10px}
-  .socials a{
-    width:34px;height:34px;border-radius:9px;
-    background:var(--surface);border:1px solid var(--border);
-    display:flex;align-items:center;justify-content:center;
-    color:var(--text-soft);text-decoration:none;
-    transition:all .2s;
+  .foot-links{display:flex;gap:18px}
+  .foot-links a{color:var(--text-mute);text-decoration:none;font-size:12px}
+  .foot-links a:hover{color:var(--accent)}
+
+  /* ===== ANIMATIONS ===== */
+  .fade-up{opacity:0;transform:translateY(14px);transition:opacity .5s ease,transform .5s ease}
+  .fade-up.in{opacity:1;transform:none}
+  .stagger > *{opacity:0;transform:translateY(10px);transition:all .38s cubic-bezier(.4,0,.2,1)}
+  .stagger.in > *:nth-child(1){transition-delay:.02s;opacity:1;transform:none}
+  .stagger.in > *:nth-child(2){transition-delay:.06s;opacity:1;transform:none}
+  .stagger.in > *:nth-child(3){transition-delay:.10s;opacity:1;transform:none}
+  .stagger.in > *:nth-child(4){transition-delay:.14s;opacity:1;transform:none}
+  .stagger.in > *:nth-child(5){transition-delay:.18s;opacity:1;transform:none}
+  .stagger.in > *:nth-child(6){transition-delay:.22s;opacity:1;transform:none}
+  .stagger.in > *:nth-child(7){transition-delay:.26s;opacity:1;transform:none}
+  .stagger.in > *:nth-child(8){transition-delay:.30s;opacity:1;transform:none}
+  .stagger.in > *:nth-child(n+9){transition-delay:.34s;opacity:1;transform:none}
+
+  /* ===== RESPONSIVE ===== */
+  @media(max-width:960px){
+    .sidebar{position:static}
+    .cat-tab{padding:7px 13px;font-size:13.5px}
+    .detail-card{padding:20px}
+    .detail-title{font-size:20px}
+    .comments-card{padding:18px 16px}
   }
-  .socials a:hover{background:var(--surface-hover);color:var(--text)}
-
-  /* ===== Toast ===== */
-  .toast{
-    position:fixed;bottom:32px;left:50%;transform:translateX(-50%) translateY(100px);
-    padding:12px 22px;border-radius:12px;
-    background:var(--surface);border:1px solid var(--border-strong);
-    color:var(--text);font-size:13.5px;font-weight:500;
-    box-shadow:var(--shadow);
-    transition:transform .35s cubic-bezier(.4,0,.2,1);
-    z-index:999;
-    display:flex;align-items:center;gap:8px;
-  }
-  .toast.show{transform:translateX(-50%) translateY(0)}
-  .toast .ok{color:var(--success);font-weight:700}
-
-  /* ===== Animations ===== */
-  .fade-up{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}
-  .fade-up.in{opacity:1;transform:translateY(0)}
-  .stagger > *{opacity:0;transform:translateY(16px);transition:all .5s cubic-bezier(.4,0,.2,1)}
-  .stagger.in > *:nth-child(1){transition-delay:.02s;opacity:1;transform:translateY(0)}
-  .stagger.in > *:nth-child(2){transition-delay:.06s;opacity:1;transform:translateY(0)}
-  .stagger.in > *:nth-child(3){transition-delay:.10s;opacity:1;transform:translateY(0)}
-  .stagger.in > *:nth-child(4){transition-delay:.14s;opacity:1;transform:translateY(0)}
-  .stagger.in > *:nth-child(5){transition-delay:.18s;opacity:1;transform:translateY(0)}
-  .stagger.in > *:nth-child(6){transition-delay:.22s;opacity:1;transform:translateY(0)}
-  .stagger.in > *:nth-child(7){transition-delay:.26s;opacity:1;transform:translateY(0)}
-  .stagger.in > *:nth-child(8){transition-delay:.30s;opacity:1;transform:translateY(0)}
-  .stagger.in > *:nth-child(9){transition-delay:.34s;opacity:1;transform:translateY(0)}
-  .stagger.in > *:nth-child(n+10){transition-delay:.38s;opacity:1;transform:translateY(0)}
-
-  /* ===== Responsive ===== */
   @media(max-width:640px){
-    .nav-links{display:none}
-    .hero{padding:48px 0 32px}
-    .ad-banner{padding:22px}
-    .stats{gap:28px}
-    .stat-item .num{font-size:22px}
-    .submit-cta{padding:36px 24px}
-    .tool-grid{grid-template-columns:1fr}
-    .pain-grid{grid-template-columns:1fr 1fr}
+    .nav-search{display:none}
+    .top-ad,.bottom-ad{padding:18px}
+    .post-card{padding:15px 16px}
+    .post-title{font-size:15.5px}
+    .post-excerpt{font-size:13.5px}
+    .btn-post span.txt{display:none}
+    .side-ad{min-height:auto;padding:16px}
+    .detail-card{padding:16px}
+    .detail-title{font-size:18px}
+    .detail-body{font-size:14.5px}
+    .comment-input-wrap{flex-direction:column}
   }
 </style>
 </head>
@@ -464,456 +756,1104 @@ lor:#fff!important;font-weight:600;font-size:13px;
 <!-- ===== HEADER ===== -->
 <header class="header">
   <div class="container nav">
-    <a href="#" class="logo">
-      <span class="logo-mark">AI</span>
-      <span>AINav<sup style="font-size:9px;color:var(--accent)">.pro</sup></span>
+    <a href="#" class="logo" onclick="goHome(event)">
+      <span class="logo-mark">🌳</span>
+      <span>树洞社<small>.club</small></span>
     </a>
-    <nav class="nav-links">
-      <a href="#tools">全部工具</a>
-      <a href="#pain">痛点专区</a>
-      <a href="#submit">提交工具</a>
-      <a href="#" class="nav-btn">🔥 今日精选</a>
-    </nav>
+    <div class="nav-search">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4-4"/></svg>
+      <input type="text" id="navSearch" placeholder="搜关键词：相亲、副业、裸辞、催婚、租房…">
+    </div>
+    <div class="nav-actions">
+      <div class="nav-user" onclick="showToast('🎭 游客模式，尽情匿名发言吧')">
+        <div class="avatar" style="background:linear-gradient(135deg,#8b7355,#6b5344)">匿</div>
+        <span style="font-size:13px;color:var(--text-soft);font-weight:600">匿名用户</span>
+      </div>
+      <button class="btn-post" onclick="openPostModal()">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+        <span class="txt">发帖</span>
+      </button>
+    </div>
   </div>
 </header>
 
-<!-- ===== HERO ===== -->
-<section class="hero">
+<!-- ===== CATEGORY BAR ===== -->
+<div class="cat-bar">
   <div class="container">
-    <span class="hero-tag fade-up"><span class="dot"></span>实时更新 · 已收录 168 款精选工具</span>
-    <h1 class="fade-up">
-      别再瞎找AI了<br>
-      <span class="grad">这里只解决你的真实痛点</span>
-    </h1>
-    <p class="fade-up">论文赶due、简历石沉大海、聊天冷场、副业没思路？精选AI工具，让年轻人少走弯路，多省时间多搞钱。</p>
-
-    <div class="search-wrap fade-up">
-      <div class="search-box">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
-        <input type="text" id="searchInput" placeholder="搜痛点：论文、简历、话术、搞钱、PPT、代码...">
-        <button class="search-btn" onclick="doSearch()">搜索</button>
-      </div>
+    <div class="cat-row" id="catRow">
+      <div class="cat-tab active" data-cat="all"><span>🔥</span>全部推荐</div>
+      <div class="cat-tab" data-cat="money"><span>💰</span>搞钱搞钱</div>
+      <div class="cat-tab" data-cat="job"><span>💼</span>职场吐槽</div>
+      <div class="cat-tab" data-cat="study"><span>📚</span>升学考试</div>
+      <div class="cat-tab" data-cat="love"><span>💔</span>感情树洞</div>
+      <div class="cat-tab" data-cat="life"><span>🌱</span>生活日常</div>
+      <div class="cat-tab" data-cat="game"><span>🎮</span>数码游戏</div>
+      <div class="cat-tab" data-cat="fashion"><span>👕</span>潮流穿搭</div>
+      <div class="cat-tab" data-cat="movie"><span>🎬</span>影视娱乐</div>
     </div>
-
-    <div class="stats fade-up">
-      <div class="stat-item"><div class="num">168+</div><div class="lbl">精选AI工具</div></div>
-      <div class="stat-item"><div class="num">8</div><div class="lbl">痛点分类</div></div>
-      <div class="stat-item"><div class="num">99%</div><div class="lbl">亲测可用</div></div>
-      <div class="stat-item"><div class="num">0</div><div class="lbl">注册强制</div></div>
-    </div>
-  </div>
-</section>
-
-<div class="container">
-  <!-- ===== TOP BANNER AD ===== -->
-  <div class="ad-banner fade-up" id="topAd">
-    <div>
-      <h3>🎓 论文急救包 · AI降重+润色+文献一键搞定</h3>
-      <p>毕业论文初稿7天搞定，查重率低于10%，室友都在偷偷用…</p>
-    </div>
-    <a href="#" class="ad-cta">立即查看 →</a>
   </div>
 </div>
 
-<!-- ===== MAIN LAYOUT ===== -->
-<section class="section" id="tools">
-  <div class="container">
-    <div class="main-layout">
+<div class="container" style="margin-top:0">
 
-      <!-- ===== LEFT: TOOLS ===== -->
-      <div>
-        <div class="section-head fade-up">
-          <h2>
-            工具库
-            <span class="sub">按你的真实需求分类，拒绝花里胡哨</span>
-          </h2>
-        </div>
+  <!-- ===== TOP AD ===== -->
+  <div class="top-ad fade-up">
+    <div class="ad-content">
+      <h3>🚀 2026 年轻人<em>副业搞钱</em>白皮书 · 限时免费下载</h3>
+      <p>8 个零成本起步的 AI 副业项目，附操作步骤 + 工具清单 + 避坑指南，已帮 3,200+ 人月入 5K+</p>
+    </div>
+    <a href="#" class="ad-cta" onclick="showToast('📥 已发送到你的匿名邮箱');return false">立即领取 →</a>
+  </div>
 
-        <!-- ===== CATEGORY CHIPS ===== -->
-        <div class="cat-wrap fade-up" id="catWrap">
-          <button class="cat-chip active" data-cat="all"><span class="emoji">🔥</span>全部推荐</button>
-          <button class="cat-chip" data-cat="study"><span class="emoji">📚</span>学习考试</button>
-          <button class="cat-chip" data-cat="job"><span class="emoji">💼</span>求职就业</button>
-          <button class="cat-chip" data-cat="write"><span class="emoji">✍️</span>写作文案</button>
-          <button class="cat-chip" data-cat="design"><span class="emoji">🎨</span>设计创作</button>
-          <button class="cat-chip" data-cat="code"><span class="emoji">💻</span>编程开发</button>
-          <button class="cat-chip" data-cat="social"><span class="emoji">💬</span>社交恋爱</button>
-          <button class="cat-chip" data-cat="money"><span class="emoji">💰</span>赚钱副业</button>
-          <button class="cat-chip" data-cat="office"><span class="emoji">⚡</span>效率办公</button>
-        </div>
+  <!-- ===== MAIN LAYOUT ===== -->
+  <div class="main-layout">
 
-        <!-- ===== TOOL GRID ===== -->
-        <div class="tool-grid stagger" id="toolGrid"></div>
+    <!-- ===== LEFT: FEED + DETAIL ===== -->
+    <div>
 
-        <!-- ===== BOTTOM AD (after tools) ===== -->
-        <div class="ad-banner fade-up" style="margin-top:36px;">
-          <div>
-            <h3>💻 编程小白福音 · 30分钟搭建自己的AI副业站点</h3>
-            <p>零基础也能上线，自动收录+SEO优化，被动收入这不就来了…</p>
+      <!-- FEED VIEW -->
+      <div class="feed-view" id="feedView">
+
+        <div class="feed-header fade-up">
+          <div class="sort-tabs" id="sortTabs">
+            <div class="sort-tab active" data-sort="hot">🔥 热度</div>
+            <div class="sort-tab" data-sort="new">🕐 最新</div>
+            <div class="sort-tab" data-sort="essence">⭐ 精华</div>
           </div>
-          <a href="#" class="ad-cta">获取教程 →</a>
+          <div class="feed-stats">共 <b id="postCount">0</b> 篇帖子</div>
+        </div>
+
+        <div class="post-list stagger" id="postList"></div>
+
+        <!-- BOTTOM AD -->
+        <div class="bottom-ad fade-up">
+          <div>
+            <h3>💻 7天学会用 AI 搭网站 · 零基础也能接单赚钱</h3>
+            <p>从选题 → 搭建 → SEO → 变现，全流程保姆级教程。结业即可接 500~5000 元/单的私活</p>
+          </div>
+          <a href="#" class="ad-cta" onclick="showToast('🎓 名额有限，先到先得');return false">免费试学 →</a>
         </div>
 
       </div>
 
-      <!-- ===== RIGHT: SIDEBAR ===== -->
-      <aside class="sidebar-sticky">
+      <!-- DETAIL VIEW -->
+      <div class="detail-view" id="detailView"></div>
 
-        <!-- Sidebar Ad 1 -->
-        <div class="side-ad fade-up">
-          <h4>🚀 AI副业训练营</h4>
-          <p>用AI做3个副业项目<br>月入5k+的实操路线图</p>
-          <a href="#" class="side-ad-cta">免费加入 →</a>
-        </div>
-
-        <!-- Hot Tools Mini List -->
-        <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:20px;">
-          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;">
-            <h5 style="font-size:14px;font-weight:700;">🔥 本周飙升榜</h5>
-            <span style="font-size:11px;color:var(--text-mute);">实时</span>
-          </div>
-          <div id="hotList" style="display:flex;flex-direction:column;gap:12px;"></div>
-        </div>
-
-        <!-- Sidebar Ad 2 -->
-        <div class="side-ad fade-up" style="background:linear-gradient(160deg,rgba(16,185,129,.08),rgba(6,182,212,.08));border-color:rgba(16,185,129,.18);">
-          <h4>📝 简历诊断服务</h4>
-          <p>AI+资深HR双重把关<br>投递回复率提升300%</p>
-          <a href="#" class="side-ad-cta">免费诊断 →</a>
-        </div>
-
-      </aside>
     </div>
-  </div>
-</section>
 
-<!-- ===== PAIN POINTS SHOWCASE ===== -->
-<section class="pain-section" id="pain">
-  <div class="container">
-    <div class="section-head fade-up">
-      <h2>
-        年轻人的8大痛点
-        <span class="sub">每一个都是正在经历的崩溃瞬间</span>
-      </h2>
-    </div>
-    <div class="pain-grid stagger" id="painGrid"></div>
-  </div>
-</section>
+    <!-- ===== SIDEBAR ===== -->
+    <aside class="sidebar">
 
-<!-- ===== SUBMIT CTA ===== -->
-<section class="container" id="submit">
-  <div class="submit-cta fade-up">
-    <div>
-      <h3>有好用的AI工具？欢迎提交</h3>
-      <p>审核通过即可免费获得首页推荐位 + 专属标签曝光，让你的工具被数万年轻人看到。</p>
-    </div>
-    <a href="#" class="submit-btn">✨ 立即提交工具</a>
+      <!-- Side Ad 1 -->
+      <div class="side-ad fade-up">
+        <div class="side-ico">💸</div>
+        <h4>AI 闲鱼无货源</h4>
+        <p>每天30分钟，自动上架自动出单<br>新手第一个月也能赚 2000+</p>
+        <a href="#" class="side-ad-btn" onclick="showToast('🔥 私聊领取内部渠道');return false">免费学习 →</a>
+      </div>
+
+      <!-- Hot Search -->
+      <div class="side-card fade-up">
+        <div class="side-title">
+          <h4><span class="icn">📈</span>今日热搜</h4>
+          <a class="more" href="#">更多 →</a>
+        </div>
+        <div class="hot-list" id="hotList"></div>
+      </div>
+
+      <!-- Hot Boards -->
+      <div class="side-card fade-up">
+        <div class="side-title">
+          <h4><span class="icn">🔥</span>热议板块</h4>
+          <a class="more" href="#">全部 →</a>
+        </div>
+        <div class="board-list" id="boardList"></div>
+      </div>
+
+      <!-- Side Ad 2 -->
+      <div class="side-ad ad-green fade-up">
+        <div class="side-ico">📝</div>
+        <h4>简历 AI 诊断 · 免费</h4>
+        <p>AI + 资深HR 双引擎把关<br>投递回复率平均提升 280%</p>
+        <a href="#" class="side-ad-btn" onclick="showToast('📨 已帮你排队');return false">免费诊断 →</a>
+      </div>
+
+      <!-- Active Users -->
+      <div class="side-card fade-up">
+        <div class="side-title">
+          <h4><span class="icn">⭐</span>活跃树洞友</h4>
+          <a class="more" href="#">更多 →</a>
+        </div>
+        <div class="user-list" id="userList"></div>
+      </div>
+
+    </aside>
   </div>
-</section>
+</div>
 
 <!-- ===== FOOTER ===== -->
 <footer class="footer">
   <div class="container">
     <div class="foot-grid">
       <div class="foot-brand">
-        <a href="#" class="logo">
-          <span class="logo-mark">AI</span>
-          <span>AINav<sup style="font-size:9px;color:var(--accent)">.pro</sup></span>
+        <a href="#" class="logo" style="margin-bottom:0">
+          <span class="logo-mark">🌳</span>
+          <span>树洞社<small>.club</small></span>
         </a>
-        <p>专属于年轻人的AI工具导航。拒绝信息过载，只给你真正有用的。让AI成为你的外挂，而不是你的焦虑来源。</p>
-        <div class="socials" style="margin-top:18px;">
-          <a href="#" title="GitHub">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.37.5 0 5.87 0 12.5c0 5.3 3.44 9.8 8.2 11.4.6.1.82-.26.82-.58v-2.03c-3.34.72-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.74.08-.73.08-.73 1.2.08 1.84 1.23 1.84 1.23 1.07 1.84 2.8 1.31 3.5 1 .1-.77.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.23-3.22-.12-.3-.54-1.52.12-3.17 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.29-1.55 3.3-1.23 3.3-1.23.66 1.65.24 2.87.12 3.17.77.84 1.23 1.91 1.23 3.22 0 4.61-2.8 5.62-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.82.58A12 12 0 0 0 24 12.5C24 5.87 18.63.5 12 .5z"/></svg>
-          </a>
-          <a href="#" title="Twitter/X">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2H21.5l-7.53 8.61L23 22h-6.797l-5.327-6.96L4.78 22H1.52l8.04-9.19L1 2h6.914l4.818 6.36L18.244 2zm-1.198 18.15h1.885L7.02 3.75H5.024L17.046 20.15z"/></svg>
-          </a>
-          <a href="#" title="微信">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8.691 2C4.768 2 1.5 4.73 1.5 8.125c0 1.884 1.04 3.566 2.67 4.696a.5.5 0 0 1 .177.528l-.47 1.78a.5.5 0 0 0 .76.528l1.442-.962a.5.5 0 0 1 .442-.06 8.25 8.25 0 0 0 2.17.29c.145 0 .288-.008.43-.018a4.95 4.95 0 0 1-.213-1.45c0-2.88 2.83-5.21 6.32-5.21.248 0 .493.012.735.036C15.326 4.183 12.32 2 8.691 2zm2.805 4.75a.875.875 0 1 1 0 1.75.875.875 0 0 1 0-1.75zm-5.25 0a.875.875 0 1 1 0 1.75.875.875 0 0 1 0-1.75zM15.75 9.5c-3.176 0-5.75 2.14-5.75 4.777 0 1.44.854 2.72 2.19 3.593a.4.4 0 0 1 .142.423l-.39 1.384a.4.4 0 0 0 .607.42l1.126-.742a.4.4 0 0 1 .35-.052c.54.16 1.112.25 1.704.272a.4.4 0 0 1 .004.003c.057 0 .112.002.168.002 3.176 0 5.75-2.14 5.75-4.777S18.926 9.5 15.75 9.5zm-2.188 3.125a.75.75 0 1 1 0 1.5.75.75 0 0 1 0-1.5zm4.376 0a.75.75 0 1 1 0 1.5.75.75 0 0 1 0-1.5z"/></svg>
-          </a>
-        </div>
+        <p>当代年轻人的匿名情绪出口。<br>
+          这里没有长辈，没有领导，只有一群在同一片海里游泳的人。<br>
+          说你不敢在朋友圈说的话，吐你平时没处吐的槽。</p>
       </div>
       <div class="foot-col">
-        <h5>分类</h5>
-        <a href="#">学习考试</a>
-        <a href="#">求职就业</a>
-        <a href="#">写作文案</a>
-        <a href="#">设计创作</a>
-        <a href="#">编程开发</a>
+        <h5>板块导航</h5>
+        <a href="#">搞钱搞钱</a>
+        <a href="#">职场吐槽</a>
+        <a href="#">升学考试</a>
+        <a href="#">感情树洞</a>
+        <a href="#">生活日常</a>
       </div>
       <div class="foot-col">
-        <h5>资源</h5>
-        <a href="#">今日精选</a>
+        <h5>帮助中心</h5>
         <a href="#">新手上路</a>
-        <a href="#">AI副业指南</a>
-        <a href="#">避坑清单</a>
-        <a href="#">RSS 订阅</a>
+        <a href="#">社区公约</a>
+        <a href="#">匿名规则</a>
+        <a href="#">举报指引</a>
+        <a href="#">常见问题</a>
       </div>
       <div class="foot-col">
-        <h5>关于</h5>
-        <a href="#">关于我们</a>
-        <a href="#">提交工具</a>
-        <a href="#">广告合作</a>
+        <h5>商务合作</h5>
+        <a href="#">广告投放</a>
+        <a href="#">内容合作</a>
         <a href="#">联系我们</a>
-        <a href="#">隐私政策</a>
+        <a href="#">意见反馈</a>
+        <a href="#">加入我们</a>
       </div>
     </div>
     <div class="foot-bottom">
-      <div>© 2026 AINav.pro · Made with ❤️ 给所有在焦虑中前行的年轻人</div>
-      <div style="display:flex;gap:16px;">
-        <a href="#" style="color:var(--text-mute);text-decoration:none;">广告合作</a>
-        <a href="#" style="color:var(--text-mute);text-decoration:none;">友链</a>
+      <div>© 2026 树洞社 · 这里说的话，都留在这里</div>
+      <div class="foot-links">
+        <a href="#">用户协议</a>
+        <a href="#">隐私政策</a>
+        <a href="#">京ICP备00000000号</a>
       </div>
     </div>
   </div>
 </footer>
 
+<!-- ===== POST MODAL ===== -->
+<div class="modal-mask" id="postModal">
+  <div class="modal">
+    <div class="modal-head">
+      <h3>✍️ 发布新帖</h3>
+      <button class="modal-close" onclick="closePostModal()">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="form-group">
+        <label>选择板块 <span class="req">*</span></label>
+        <select id="postCat">
+          <option value="money">💰 搞钱搞钱</option>
+          <option value="job">💼 职场吐槽</option>
+          <option value="study">📚 升学考试</option>
+          <option value="love">💔 感情树洞</option>
+          <option value="life">🌱 生活日常</option>
+          <option value="game">🎮 数码游戏</option>
+          <option value="fashion">👕 潮流穿搭</option>
+          <option value="movie">🎬 影视娱乐</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>帖子标题 <span class="req">*</span></label>
+        <input type="text" id="postTitle" placeholder="一句话说清楚你的事，建议 15~30 字" maxlength="60">
+        <div class="form-tip">好标题 = 场景 + 冲突 + 悬念（例：下班前10分钟被安排任务，我直接走了…）</div>
+      </div>
+      <div class="form-group">
+        <label>帖子正文 <span class="req">*</span></label>
+        <textarea id="postContent" placeholder="写点什么吧……这里是匿名的，放心说。"></textarea>
+      </div>
+      <label class="anon-checkbox">
+        <input type="checkbox" id="postAnon" checked>
+        匿名发布（推荐） · 其他人看不到你的身份
+      </label>
+    </div>
+    <div class="modal-foot">
+      <button class="btn-cancel" onclick="closePostModal()">取消</button>
+      <button class="btn-submit-post" onclick="submitPost()">🌳 发布到树洞</button>
+    </div>
+  </div>
+</div>
+
 <!-- ===== TOAST ===== -->
-<div class="toast" id="toast"><span class="ok">✓</span><span id="toastText">已复制到剪贴板</span></div>
+<div class="toast" id="toast"><span class="ok">✓</span><span id="toastText">操作成功</span></div>
 
 <script>
-// ===== DATA: 精准戳痛点的AI工具 =====
-const TOOLS = [
-  // 学习考试
-  {id:1,name:'论文急救GPT',icon:'🎓',cat:'study',desc:'输入题目→大纲→初稿→降重润色一条龙，比室友早3天交初稿还拿高分。',tags:['论文','降重','润色','本科/硕士'],price:'部分免费',badge:'hot',url:'#'},
-  {id:2,name:'期末考试君',icon:'📝',cat:'study',desc:'上传课件PPT，5分钟生成重点+模拟题+速记卡，熬夜急救专用。',tags:['期末','重点','刷题','押题'],price:'免费',badge:'new',url:'#'},
-  {id:3,name:'文献速读王',icon:'📄',cat:'study',desc:'100篇PDF文献扔进去，自动总结观点对比+生成引用，开题报告省2周。',tags:['文献','综述','开题','引用'],price:'免费试用',url:'#'},
-  {id:4,name:'考研政治速记',icon:'🇨🇳',cat:'study',desc:'把肖四肖八喂给AI，生成口诀+时间线+易混点对比，选择题多拿10分。',tags:['考研','政治','速记','口诀'],price:'免费',url:'#'},
+// ==============================================================
+// DATA
+// ==============================================================
+const CAT_META = {
+  all:{name:'全部推荐',emoji:'🔥'},
+  money:{name:'搞钱搞钱',emoji:'💰'},
+  job:{name:'职场吐槽',emoji:'💼'},
+  study:{name:'升学考试',emoji:'📚'},
+  love:{name:'感情树洞',emoji:'💔'},
+  life:{name:'生活日常',emoji:'🌱'},
+  game:{name:'数码游戏',emoji:'🎮'},
+  fashion:{name:'潮流穿搭',emoji:'👕'},
+  movie:{name:'影视娱乐',emoji:'🎬'},
+};
 
-  // 求职就业
-  {id:5,name:'简历魔术师',icon:'📋',cat:'job',desc:'把你写的垃圾简历重写成HR一眼相中的样子，附带投递话术模板。',tags:['简历','优化','求职','校招'],price:'部分免费',badge:'hot',url:'#'},
-  {id:6,name:'面试军师',icon:'🎯',cat:'job',desc:'输入目标公司+岗位，模拟面试+实时点评+标准答案，面字节也不慌。',tags:['面试','模拟','大厂','复盘'],price:'免费试用',url:'#'},
-  {id:7,name:'谈薪计算器',icon:'💵',cat:'job',desc:'根据学历/经验/城市/公司级别，算出合理薪资区间+谈薪话术，多要2K算少的。',tags:['薪资','谈薪','Offer','谈判'],price:'免费',badge:'new',url:'#'},
-  {id:8,name:'考公刷题搭子',icon:'🏛️',cat:'job',desc:'行测申论智能错题本，找出你的知识盲区，常识蒙题技巧比粉笔还绝。',tags:['考公','行测','申论','国考省考'],price:'部分免费',url:'#'},
+const AVATAR_COLORS = [
+  ['#8b7355','#6b5344'],['#7a8b55','#5a6b44'],['#557a8b','#445a6b'],
+  ['#8b5a73','#6b445a'],['#8b6b55','#6b5344'],['#6b8b73','#446b5a'],
+  ['#8b7355','#8b5a55'],['#73558b','#5a446b'],['#558b7a','#446b5a'],
+];
+function randColor(){return AVATAR_COLORS[Math.floor(Math.random()*AVATAR_COLORS.length)]}
+function avatarWith(c,ch){const [a,b]=c;return `<div class="avatar" style="background:linear-gradient(135deg,${a},${b})">${ch}</div>`}
 
-  // 写作文案
-  {id:9,name:'小红书爆款生成器',icon:'📕',cat:'write',desc:'输入产品/主题，一键生成标题+正文+标签+emoji，号主们的秘密武器。',tags:['小红书','种草','爆款','标题党'],price:'部分免费',badge:'hot',url:'#'},
-  {id:10,name:'公众号洗稿神器',icon:'📰',cat:'write',desc:'给10篇爆款，洗出你的原创爆款文。结构不变，表达全换，过原创检测。',tags:['公众号','洗稿','原创','爆文'],price:'免费试用',url:'#'},
-  {id:11,name:'周报月报救命器',icon:'📊',cat:'write',desc:'列几个干过的事，自动写成领导爱看的高情商周报，摸鱼也能被夸。',tags:['周报','月报','职场','汇报'],price:'免费',badge:'',url:'#'},
-  {id:12,name:'短视频脚本王',icon:'🎬',cat:'write',desc:'想做抖音/视频号？输入赛道，3秒出分镜脚本+口播文案+钩子设计。',tags:['短视频','脚本','抖音','口播'],price:'部分免费',badge:'hot',url:'#'},
+const ANON_NAMES = ['匿名树洞友','匿名的猫','匿名咸鱼','匿名打工人','匿名学生党','匿名冲浪选手','匿名网民','匿名夜猫子','匿名社恐','匿名摆烂人'];
+function randAnon(){return ANON_NAMES[Math.floor(Math.random()*ANON_NAMES.length)]}
+function randChar(){const s='森屿鹤松竹风月影星辰山海溪云雾';return s[Math.floor(Math.random()*s.length)]}
 
-  // 设计创作
-  {id:13,name:'PPT一键生',icon:'📽️',cat:'design',desc:'输入主题，自动出完整PPT（模板+排版+文案+配图），毕业答辩/汇报神器。',tags:['PPT','演示','答辩','汇报'],price:'部分免费',badge:'hot',url:'#'},
-  {id:14,name:'电商图工厂',icon:'🛍️',cat:'design',desc:'上传一张产品图，秒出白底图/场景图/主图海报，开拼多多淘宝不用找美工。',tags:['电商','主图','详情页','抠图'],price:'免费试用',url:'#'},
-  {id:15,name:'Logo随手画',icon:'🏷️',cat:'design',desc:'描述你的品牌，100个Logo方案任你选，副业接单再也不用熬夜改稿。',tags:['Logo','品牌','设计','接单'],price:'免费',badge:'new',url:'#'},
-  {id:16,name:'头像壁纸工坊',icon:'🖼️',cat:'design',desc:'生成专属头像/朋友圈背景/手机壁纸，换头像的频率比换对象还勤。',tags:['头像','壁纸','个性化','AI绘画'],price:'免费',url:'#'},
-
-  // 编程开发
-  {id:17,name:'Bug终结者',icon:'🐛',cat:'code',desc:'贴报错信息，秒出原因+解决方案+代码修复，StackOverflow直接不用开了。',tags:['调试','Bug','报错','修复'],price:'部分免费',badge:'hot',url:'#'},
-  {id:18,name:'全栈搬砖侠',icon:'🧱',cat:'code',desc:'说一句\"做一个xx网站\"，直接输出前后端完整代码，接私活效率翻5倍。',tags:['全栈','生成代码','私活','接单'],price:'免费试用',url:'#'},
-  {id:19,name:'注释翻译官',icon:'🔍',cat:'code',desc:'祖传屎山代码一键生成注释+流程图，看懂前任的代码不再想离职。',tags:['注释','重构','文档','接手项目'],price:'免费',url:'#'},
-  {id:20,name:'面试算法通',icon:'🧮',cat:'code',desc:'LeetCode每题秒给最优解+思路讲解+复杂度分析，字节算法面直接开挂。',tags:['算法','LeetCode','大厂面试','数据结构'],price:'部分免费',badge:'new',url:'#'},
-
-  // 社交恋爱
-  {id:21,name:'高情商回复机',icon:'💌',cat:'social',desc:'不知道怎么回消息？粘贴聊天记录，给你3个高情商回复方案，秒变暖男/海王。',tags:['聊天','话术','高情商','恋爱'],price:'免费',badge:'hot',url:'#'},
-  {id:22,name:'朋友圈文案库',icon:'🌟',cat:'social',desc:'旅行/美食/emo/晒娃/广告，各种风格一键生成，再也不用半小时憋一句。',tags:['朋友圈','文案','emo','装逼'],price:'免费',url:'#'},
-  {id:23,name:'脱单规划师',icon:'💕',cat:'social',desc:'根据你的情况给搭讪+约会+升级关系全流程方案，母胎solo也能脱单。',tags:['脱单','搭讪','约会','恋爱'],price:'部分免费',badge:'new',url:'#'},
-  {id:24,name:'道歉小能手',icon:'🙇',cat:'social',desc:'和对象吵架了？输入原因，生成真诚不敷衍的道歉小作文，保命神器。',tags:['道歉','吵架','复合','情侣'],price:'免费',url:'#'},
-
-  // 赚钱副业
-  {id:25,name:'AI取名大师',icon:'✨',cat:'money',desc:'宝宝取名/店铺取名/品牌取名/网名，附带五行+寓意+查重，一单收99不是梦。',tags:['取名','副业','小红书','抖音'],price:'免费',badge:'hot',url:'#'},
-  {id:26,name:'闲鱼文案王',icon:'🐟',cat:'money',desc:'闲置物品描述秒写成爆款文案，浏览量翻3倍，断舍离顺便赚奶茶钱。',tags:['闲鱼','二手','闲置','卖货'],price:'免费',url:'#'},
-  {id:27,name:'虚拟资料打包机',icon:'📦',cat:'money',desc:'自动整理+包装虚拟资料（模板/教程/素材），拼多多淘宝自动发货躺赚。',tags:['虚拟产品','电商','拼多多','被动收入'],price:'部分免费',badge:'new',url:'#'},
-  {id:28,name:'短剧文案拆解',icon:'🎭',cat:'money',desc:'拆解爆款短剧结构，生成同类型剧本模板，抖音短剧号变现利器。',tags:['短剧','剧本','抖音','变现'],price:'免费试用',url:'#'},
-
-  // 效率办公
-  {id:29,name:'Excel公式王',icon:'📈',cat:'office',desc:'描述你要的效果，秒出Excel公式+VBA+PowerQuery，不会函数也能当表哥表姐。',tags:['Excel','公式','函数','VBA'],price:'部分免费',badge:'hot',url:'#'},
-  {id:30,name:'会议纪要生成器',icon:'🎙️',cat:'office',desc:'上传录音/录屏，自动出逐字稿+会议纪要+待办事项，下班不用写总结。',tags:['会议','纪要','录音','转写'],price:'免费试用',url:'#'},
-  {id:31,name:'邮件得体回复',icon:'📧',cat:'office',desc:'输入对方邮件内容和你想表达的，生成得体职场英文/中文邮件回复。',tags:['邮件','职场','英文','沟通'],price:'免费',url:'#'},
-  {id:32,name:'旅行攻略定制师',icon:'🧳',cat:'office',desc:'预算+天数+目的地偏好，秒出含交通住宿美食的个性化攻略，说走就走。',tags:['旅行','攻略','行程','机票酒店'],price:'免费',badge:'new',url:'#'},
+// Posts
+const POSTS = [
+  {id:1,cat:'money',tag:'hot',title:'毕业3年存款5万，我是不是太废了？',author:'想发财的咸鱼',anon:false,avatar:randColor(),time:'3小时前',
+    excerpt:'室友一个副业月入2万，我工资到手才6500，存了三年才5万。最近在看各种副业项目，AI作图、闲鱼无货源、小红书号……有没有真的赚到钱的老哥来分享一下？骗子广告绕道，要真实经历…',
+    likes:3421,comments:487,views:28900,essence:false,
+    body:[
+      '先交代背景：双非本科，毕业进了一家小互联网公司做运营，税前9K，税后到手6500左右，在杭州。',
+      '房租2000，吃饭1500，交通水电杂七杂八500，每个月省吃俭用能存2500就不错了。三年存了5万，看着银行卡里的数字，说真的有点焦虑。',
+      '同宿舍的室友，去年开始做AI作图小红书号，现在接商单一条3000，一个月稳定2-3万。他让我跟着做，但我实在没有美术细胞，也不知道从哪下手。',
+      '最近在研究各种副业：闲鱼无货源、AI短剧号、淘宝虚拟资料、公众号流量主……但感觉网上的教程都太割韭菜了，动不动就299、599的课程。',
+      '有没有真的通过副业赚到钱的老哥？求分享真实路径，广告哥勿扰，不然我直接删评。',
+    ],
+    imgs:null
+  },
+  {id:2,cat:'job',tag:'hot',title:'领导下班前10分钟安排任务，我直接走了，结果被约谈',author:'匿名',anon:true,avatar:randColor(),time:'5小时前',
+    excerpt:'准点下班有问题吗？下班前10分钟给我派一个2小时的活，我直接说今天做不完，收拾东西走人了。第二天HR找我谈话说我态度有问题……',
+    likes:5823,comments:923,views:46700,essence:true,
+    body:[
+      '周三下午5:50，准点下班是6:00。',
+      '领导从我工位路过，扔下一句："小X啊，这个客户的方案今晚帮我改一下吧，明天早上要用，不急。"',
+      '我抬头看了他一眼，说："这个方案我估计要改2个小时，今天做不完，明天早上来做吧。"',
+      '他脸一沉："客户要得急，你加个班怎么了？年轻人不要这么计较。"',
+      '我没回话，直接关电脑，收拾东西，六点整准时打卡走人。',
+      '结果第二天一上班，HR把我叫到会议室，说领导投诉我"工作态度不端正，执行力差"，让我写检讨。',
+      '我当场笑了。跟HR说："劳动法规定加班要给加班费，我月薪里不包含下班后10分钟开始的2小时工作量。如果算加班费，1.5倍，我今晚可以做。"',
+      'HR沉默了。到现在三天过去了，也没提检讨的事，领导在公司看见我也假装没看见。',
+      '00后整顿职场，从我做起。',
+    ],
+    imgs:null
+  },
+  {id:3,cat:'study',tag:'essence',title:'二战失败，爸妈说我在家啃老，连夜收拾行李搬去青旅',author:'考研钉子户',anon:false,avatar:randColor(),time:'8小时前',
+    excerpt:'一战差5分，二战差3分。出分那天我爸跟我说："你别考了，我们养不起你了。" 我妈在旁边边哭边说家里钱都被我花光了。其实我二战花的都是自己实习存的2万块…',
+    likes:4156,comments:712,views:38200,essence:true,
+    body:[
+      '本科双非，一战985差5分，调剂不甘心，想着再来一年。',
+      '二战我没要家里的钱，用的是大四实习存的2万块，在学校附近租了个800块的单间。',
+      '这一年真的拼了，每天7点起12点睡，除了吃饭睡觉就是学习。考前一个月每天都在哭，觉得自己什么都不会。',
+      '出分那天，比去年还低了2分。',
+      '打电话给家里报成绩，我爸在电话里沉默了五秒，然后说："你别考了，我们养不起你了。别人毕业三年都存了十万了，你还在花家里钱。"',
+      '我妈接过电话，边哭边说："你知不知道你这两年花了家里多少钱？你表弟都买车了，你还在考试考试。"',
+      '我挂了电话，坐在出租屋里发了一下午呆。其实我二战一分钱家里钱都没花，房租、资料费、生活费，全是实习的工资。',
+      '当晚我收拾了一个行李箱，没跟家里说，坐高铁去了隔壁市，找了个50块钱一晚的青旅。',
+      '现在在青旅住了一周，在投简历，准备先找个工作活下去。三战？没想好，先活着吧。',
+    ],
+    imgs:null
+  },
+  {id:4,cat:'love',tag:'hot',title:'相亲女说我月薪8K养活不了她，我说我养条狗每月才300',author:'匿名',anon:true,avatar:randColor(),time:'12小时前',
+    excerpt:'第三次相亲了。女生985毕业，月薪6K，一坐下就问我房车存款。我说月薪8K，没房没车，存款15万。她当场就笑了，说"这点钱养活你自己都难吧？" 我气笑了…',
+    likes:6789,comments:1205,views:52300,essence:false,
+    body:[
+      '亲戚介绍的，说是985毕业，长得漂亮，让我好好把握。',
+      '约了个人均100的西餐厅，我点了个牛排她点了个意面加甜品加咖啡，最后是我买的单，368。',
+      '吃着吃着她就开始了："你是做什么的呀？月薪多少呀？有房吗？有车吗？存款多少？爸妈有退休金吗？"',
+      '我老老实实回答："做运营，月薪到手8K，无房无车，存款15万，爸妈都是老师有退休金。"',
+      '她听完就笑了，那种从鼻子里出来的笑。她说："8千？我自己都花6千了，你这点钱养活你自己都难吧？以后怎么养家？"',
+      '我当时真的气笑了。我说："姐，我8千房租1500吃饭1200，每个月还能存4000。你6千月光买衣服化妆品就4000，到底是谁养活不了谁？"',
+      '"再说了，我自己能养活自己就行，为什么要养活你？我养条狗每月才花300，狗还会朝我摇尾巴，你会吗？"',
+      '她当场就变脸了，拎着包就走，甜品没吃完都打包走了。',
+      '晚上收到亲戚微信，说我人不错就是嘴太毒，让我下次改改。',
+      '改个屁。下次再这样的我直接怼。',
+    ],
+    imgs:null
+  },
+  {id:5,cat:'life',tag:'new',title:'中介跑路房东赶人，刚毕业被坑2个月房租加押金',author:'刚毕业的小白',anon:false,avatar:randColor(),time:'1天前',
+    excerpt:'去年刚毕业来深圳，在蛋壳公寓（后来知道是他们换了个马甲）租了个单间，押二付一交了9000。住了28天房东敲门说中介没给他打钱，让我3天内搬走…',
+    likes:2987,comments:456,views:21400,essence:false,
+    body:[
+      '去年6月毕业，7月一个人拖着两个行李箱来深圳。',
+      '在58上找的房子，业务员说是品牌公寓，"放心住，不会有问题的"。看了房觉得还行，单间2000，环境不错，离地铁也近。',
+      '签合同的时候让我押二付一，还有一年的管理费，一次性交了9000。当时我一个应届生，卡里一共就12000，交完就剩3000生活费了。',
+      '住了28天，第29天早上有人敲门。一个50多岁的阿姨，说她是房东。',
+      '"中介只给了我一个月房租，这个月没打钱，我要收房了。你3天之内搬走。"',
+      '我当场就懵了。打电话给业务员，关机。打给客服，说公司在走"重组流程"，让我等通知。',
+      '阿姨人其实不错，给我宽限了一周，说她也被骗了，也在找中介。',
+      '那一周我白天找房子，晚上查维权群，加入了一个300多人的群，全是和我一样的受害者。群里有人已经去起诉了，说钱大概率要不回来。',
+      '最后是学姐收留了我，在她的出租屋打了一个月地铺，才缓过来。',
+      '给刚毕业的同学提个醒：租房一定要找房东直签，或者链家自如这种大平台。不要贪便宜找二房东、小中介，坑死你没商量。',
+    ],
+    imgs:null
+  },
+  {id:6,cat:'money',tag:'new',title:'做小红书AI头像号，30天赚了1872块，分享一下我的路径',author:'搞钱小能手',anon:false,avatar:randColor(),time:'1天前',
+    excerpt:'没什么本钱，也没有什么特长，照着小红书上的教程做AI头像号，第一个月纯赚1872。不多，但是对我来说是个鼓励。写一下我怎么做的，全是干货，没有广告…',
+    likes:3210,comments:398,views:27600,essence:false,
+    body:[
+      '先说好，这个不暴利，一个月赚个2000-5000顶天了，适合学生党或者下班后有空的打工人。不收费，不卖课，纯分享。',
+      '一、怎么做号：',
+      '- 注册一个小红书号，昵称头像简介改一改，围绕"AI头像""专属头像""情侣头像"来',
+      '- 素材：用某 MidJourney 平替（国内的免费的有很多，不点名免得说广告），生成头像',
+      '- 每天发3条，一条是9张女头，一条是9张男头，一条是情侣头像，带话题#AI头像 #专属头像 #情侣头像',
+      '',
+      '二、怎么变现：',
+      '- 评论区私信引导："想要定制的宝子私我"',
+      '- 定价：单人头像19.9，情侣/闺蜜39.9，宠物头像29.9',
+      '- 我第一个月一共接了62单，收入1872，减去平台会员费30，净赚1842',
+      '',
+      '三、避坑：',
+      '- 不要在评论区直接留微信，会限流',
+      '- 不要报299 399的课，B站和小红书上免费教程多的是',
+      '- 前两周数据不好很正常，坚持发，第15天左右会有爆文',
+      '',
+      '就是这样。对普通人来说，能赚到第一块钱，比什么都重要。',
+    ],
+    imgs:null
+  },
+  {id:7,cat:'game',tag:'',title:'Switch2 发布了，4599值不值得买？已预定的我有点后悔',author:'任天堂信仰粉',anon:false,avatar:randColor(),time:'1天前',
+    excerpt:'昨天看了发布会，第一时间预定了OLED版套装4599。今天冷静下来一想，我塞尔达王国之泪都还没通关呢，买新机器干嘛？又要吃灰3个月…有同样冲动消费的吗？',
+    likes:1234,comments:287,views:15600,essence:false,
+    body:[
+      '发布会当晚热血沸腾，4K画质，新塞尔达护航，手柄终于不漂移了，OLED屏，看啥都想买。',
+      '微信付完4599的那一刻，爽了5分钟。',
+      '今天早上起来打开储物柜，里面的Switch OLED版还贴着膜，卡带除了塞尔达和马里奥，还有一堆没拆封的。',
+      '算一下：上一台Switch OLED买了2699，游戏花了3000多，实际玩的时间加起来不到100小时。',
+      '每次都是：发布→冲动预定→到手玩3天→吃灰。',
+      '有没有同款病友？',
+    ],
+    imgs:null
+  },
+  {id:8,cat:'fashion',tag:'',title:'花50块Tony老师给我剪了个"美式前刺"，结果像汉奸头',author:'匿名',anon:true,avatar:randColor(),time:'2天前',
+    excerpt:'拿着小红书的图去的，给理发师看了5张参考，他说"放心，我剪了30年头发"。剪完照镜子的那一刻，我真的差点哭了，整个一抗战剧里的汉奸造型，明天怎么去上班…',
+    likes:2056,comments:478,views:19800,essence:false,
+    body:[
+      '给理发师看了小红书收藏夹里的美式前刺参考，还是那种10w+赞的爆款笔记，我问他："这个你能剪吗？"',
+      '他斜着眼睛看了一眼，说："小伙子，我剪了30年了，这个我天天剪，比这个还好看。"',
+      '我放心地闭上了眼。30分钟后，他拍了拍我："好了，看看吧。"',
+      '我睁开眼的那一刻，差点当场去世。',
+      '两边剃得比光头长一厘米，头顶留了一大片往前梳，刘海还分了条缝，整个一个——潘长江老师 + 抗战剧翻译官的结合体。',
+      '我弱弱地问："这……是美式前刺？"',
+      '他很自信："对呀！我给你改良了，更适合你的脸型！你看多精神！"',
+      '我："……" （内心：精神？这是精神小伙的精神吧？）',
+      '付了50块出了理发店门，风一吹，头顶那撮毛飘起来的那一刻，我真的好想哭。',
+      '明天怎么上班？在线等，急。除了剃光头还有别的拯救方案吗？',
+    ],
+    imgs:null
+  },
+  {id:9,cat:'movie',tag:'new',title:'《庆余年3》大结局把我看哭了，有没有人聊聊？（剧透慎入）',author:'追剧狂魔',anon:false,avatar:randColor(),time:'2天前',
+    excerpt:'等了两年的庆余年3终于一口气更完了，看完最后三集我直接一个人坐在沙发上哭了半小时。范闲和陈萍萍那段戏，还有最后叶轻眉的真相……真的顶不住啊',
+    likes:1823,comments:345,views:17200,essence:false,
+    body:[
+      '（剧透警告！！！没看过的别往下翻！！！）',
+      '.',
+      '.',
+      '.',
+      '陈萍萍被凌迟那段，范闲冲进法场抱着他的时候，我的眼泪就没停过。吴刚老师演得真的太绝了，一个眼神一个表情全是戏。',
+      '还有最后那封叶轻眉的信，"老娘来过，老娘活过，老娘不后悔"，直接泪崩。',
+      '原来所有的一切，从一开始就是她设的局。五竹是她留的，图书馆是她留的，范闲是她留的，甚至连庆帝的结局，她都算好了。',
+      '最后范闲带着林婉儿和孩子们回澹州，在海边遇到一个穿白裙子的小女孩，说她也姓叶。镜头给了个特写，小女孩眼睛里闪过一道机器人的光。',
+      '导演你这是要拍4的节奏啊？！',
+      '有人和我一样追完了的吗？评论区聊聊！',
+    ],
+    imgs:null
+  },
+  {id:10,cat:'job',tag:'',title:'我那个天天摸鱼的同事，居然被提拔成了我的主管',author:'努力的牛马',anon:false,avatar:randColor(),time:'2天前',
+    excerpt:'同事A是我们部门著名摸鱼王，每天到公司先刷1小时抖音，中午吃饭2小时，下午准时准点6点走，做的方案全是网上抄的。我每天加班到9点，结果他提拔成主管了…就因为他是老板远房侄子',
+    likes:4521,comments:678,views:34200,essence:false,
+    body:[
+      '我和同事A是同时入职的，去年校招一起进的公司。',
+      '这一年多，我：',
+      '- 每天9点到公司，主动加班到9点是常态，忙的时候11点',
+      '- 做的方案改个5、6遍是常事，领导说啥就改啥',
+      '- 客户投诉我来背锅，同事请假我来顶班',
+      '- 全年KPI部门第一，绩效两次S',
+      '',
+      '同事A：',
+      '- 每天10点到公司，先刷1小时抖音+微博',
+      '- 中午11点半准时出去吃饭，下午2点回公司',
+      '- 回公司先睡半小时，醒了喝杯咖啡聊聊天',
+      '- 下午5点半收拾东西，6点整准时消失',
+      '- 做的方案全是网上找的模板改一改，出错了就甩锅',
+      '',
+      '上周部门开会，领导宣布他升任部门副主管，成了我的顶头上司。',
+      '散会后我实在气不过，和另一个同事吐槽，同事很惊讶看着我："你不知道啊？他是老板老婆的堂弟。"',
+      '我：……',
+      '行吧，下周开始找工作。努力在关系面前，啥也不是。',
+    ],
+    imgs:null
+  },
+  {id:11,cat:'love',tag:'essence',title:'和男朋友谈了5年，他妈妈偷偷给他安排了3次相亲',author:'等不起的女生',anon:false,avatar:randColor(),time:'3天前',
+    excerpt:'从大二谈到现在，5年了。见过双方父母，我以为明年就要谈婚论嫁了。结果昨天翻他手机，看到他妈妈给他发的微信："那个银行局长的女儿你周末去见一下，你爸都和人说好了。" 往前一翻，已经安排了3次…',
+    likes:5234,comments:876,views:42100,essence:true,
+    body:[
+      '我们是大二在一起的，同一个学校不同专业，他追的我。',
+      '5年，陪他度过了考研失败、找工作碰壁、换城市从头开始。我以为我们会结婚的。',
+      '去年见了他爸妈，他爸妈对我很客气，还说让我们早点定下来。我还开心了好久。',
+      '昨天他洗澡，手机放桌上响了一下，我无意瞟了一眼。',
+      '他妈妈发来的："那个银行局长的女儿你周末抽空去见一下吧，你爸和人局长都约好了，人家条件很好，对你以后发展有帮助。"',
+      '我脑子一下子就懵了。手不受控制地往前翻聊天记录。',
+      '翻了大概10分钟，往前一年多，他妈妈陆续给他安排了3次相亲，他都去了。还和他妈妈说："你放心，我心里有数，我和她只是现在还没分。"',
+      '他出来的时候，我把手机递给他，什么都没说。',
+      '他沉默了很久，说了一句："我不想和你分手，但是我妈那边，我没办法。我们家就我一个儿子，我不能不孝顺。"',
+      '"你等我，等我说服我妈。"',
+      '我27了，我还能等多久？',
+      '当晚我收拾东西从他的出租屋搬出来了。5年青春，喂了狗。',
+    ],
+    imgs:null
+  },
+  {id:12,cat:'study',tag:'',title:'省考出分，行测76申论48，这申论是玄学吧？',author:'考公的可怜人',anon:false,avatar:randColor(),time:'3天前',
+    excerpt:'备考了8个月，行测稳定75+，申论跟着某笔某图某君学了大半年，背了几十篇范文，结果考了48分。我朋友裸考申论都考了62，这申论到底怎么学？？',
+    likes:2341,comments:567,views:18900,essence:false,
+    body:[
+      '去年6月毕业，全职备考公务员8个月。',
+      '行测我一直挺稳的，粉笔模考基本都是75-80，真题也差不多。考完估分行测76，差不多，符合预期。',
+      '申论我是跟着各大名师学的，某笔的系统班，某君的100题，某图的万能宝典，范文背了几十篇，什么五段三分、起承转合，我比谁都熟。',
+      '考完对了申论的答案，感觉要点都踩到了，大作文写得也挺顺的。保守估分65。',
+      '结果出分：行测76，申论48。总分124，离进面线还差11分。',
+      '我当时就哭了。8个月啊，我朋友人家就复习了2个月，申论裸考62，行测60，总分122，和我差不多。',
+      '我就想问问，申论到底是啥玄学？难道真的是看运气？',
+      '有没有申论大佬来指点一下？我要不要报个地面班？',
+    ],
+    imgs:null
+  },
 ];
 
-// ===== 痛点卡片数据 =====
-const PAINS = [
-  {emoji:'😰',title:'论文写不出来',desc:'deadline前3天还是一片空白，降重降得怀疑人生。'},
-  {emoji:'💔',title:'简历石沉大海',desc:'投了100份简历，面试通知不到5个，到底问题出在哪？'},
-  {emoji:'🤐',title:'聊天总冷场',desc:'喜欢的人不知道怎么开口，话题终结者说的就是你。'},
-  {emoji:'💸',title:'主业养不活自己',desc:'工资到账就没，副业不知道从哪下手，想搞钱没方向。'},
-  {emoji:'😴',title:'周报像挤牙膏',desc:'干了一堆活写不出来，怕写多了下次活更多，写少了又觉得水。'},
-  {emoji:'🎨',title:'不会设计被坑',desc:'做个Logo淘宝花500还不如AI生成的，又贵又慢还不能退。'},
-  {emoji:'📊',title:'Excel看到头大',desc:'VLOOKUP都搞不定，同事半小时搞定的表我要做一天。'},
-  {emoji:'🎬',title:'想做短视频怕出镜',desc:'知道短视频能赚钱但不想露脸，不知道做什么赛道。'},
+// Hot searches
+const HOT_SEARCHES = [
+  {title:'00后整顿职场名场面大盘点',heat:'42.6万',hot:true},
+  {title:'2026考研国家线预测',heat:'38.1万',hot:true},
+  {title:'副业月入过万的10个真实案例',heat:'34.2万',hot:true},
+  {title:'985毕业生回县城的生活',heat:'29.7万',hot:false},
+  {title:'庆余年3大结局解析',heat:'27.3万',hot:false},
+  {title:'相亲AA制被骂小气',heat:'25.8万',hot:false},
+  {title:'杭州某厂裁员赔偿N+3',heat:'22.1万',hot:false},
+  {title:'50元理发翻车大赏',heat:'18.6万',hot:false},
+  {title:'闲鱼无货源还能做吗',heat:'16.2万',hot:false},
+  {title:'Switch2值不值得首发',heat:'14.8万',hot:false},
 ];
 
-// ===== 渲染工具 =====
-const grid = document.getElementById('toolGrid');
-let currentCat = 'all';
-let currentKw = '';
+const BOARDS = [
+  {cat:'money',count:'32.8万'},
+  {cat:'job',count:'28.5万'},
+  {cat:'love',count:'25.1万'},
+  {cat:'study',count:'21.7万'},
+  {cat:'life',count:'18.3万'},
+  {cat:'movie',count:'14.9万'},
+  {cat:'game',count:'12.4万'},
+  {cat:'fashion',count:'9.8万'},
+];
 
-function renderTools(){
-  const filtered = TOOLS.filter(t=>{
-    const catOk = currentCat==='all' || t.cat===currentCat;
-    const kw = currentKw.trim().toLowerCase();
-    const kwOk = !kw || t.name.toLowerCase().includes(kw) || t.desc.toLowerCase().includes(kw) || t.tags.some(tag=>tag.toLowerCase().includes(kw));
-    return catOk && kwOk;
-  });
+const ACTIVE_USERS = [
+  {name:'咸鱼翻身中',bio:'搞钱 | 副业 | 努力脱单',vip:true,avatar:randColor(),ch:'咸'},
+  {name:'摆烂艺术家',bio:'主业摆烂 副业搞钱',vip:false,avatar:randColor(),ch:'摆'},
+  {name:'不想上班',bio:'每天想辞职300次',vip:false,avatar:randColor(),ch:'班'},
+  {name:'深夜emo博主',bio:'深夜人类情绪回收',vip:true,avatar:randColor(),ch:'e'},
+  {name:'考研不跑路',bio:'今年必须上岸！',vip:false,avatar:randColor(),ch:'考'},
+];
 
-  grid.innerHTML = '';
-  let nativeAdInserted = false;
+// Native ad
+const NATIVE_AD = {
+  id:'ad',
+  cat:'money',
+  tag:'sponsored',
+  title:'2026年AI副业新手训练营 · 限时免费进群',
+  author:'官方推荐',
+  anon:false,
+  avatar:randColor(),
+  time:'推广',
+  excerpt:'从0到1教你用AI做小红书号、闲鱼店、短视频号。每天30分钟，普通人也能搞的副业项目。已有3200+同学加入，名额有限先到先得 →',
+  likes:9999,comments:999,views:99999,essence:false,
+  isAd:true,
+};
 
-  filtered.forEach((t,idx)=>{
-    // 在第3个位置插入原生广告（移动端体验更佳）
-    if(idx===3 && !nativeAdInserted){
-      grid.appendChild(makeNativeAd());
-      nativeAdInserted = true;
+// ==============================================================
+// HELPERS
+// ==============================================================
+let toastTimer;
+function showToast(text){
+  const t = document.getElementById('toast');
+  document.getElementById('toastText').textContent = text;
+  t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(()=>t.classList.remove('show'),2200);
+}
+function formatNum(n){
+  if(n>=10000) return (n/10000).toFixed(1)+'万';
+  return n.toLocaleString();
+}
+function escapeHtml(s){
+  const d=document.createElement('div');d.textContent=s;return d.innerHTML;
+}
+function postTagLabel(tag){
+  if(tag==='hot') return `<span class="post-tag hot">🔥 HOT</span>`;
+  if(tag==='essence') return `<span class="post-tag essence">⭐ 精华</span>`;
+  if(tag==='new') return `<span class="post-tag new">✨ NEW</span>`;
+  return '';
+}
+
+// ==============================================================
+// RENDER POST LIST
+// ==============================================================
+let currentCat='all', currentSort='hot', currentKw='';
+const postListEl = document.getElementById('postList');
+const postCountEl = document.getElementById('postCount');
+
+function filterPosts(){
+  let list = POSTS.slice();
+  if(currentCat!=='all') list = list.filter(p=>p.cat===currentCat);
+  const kw = currentKw.trim().toLowerCase();
+  if(kw){
+    list = list.filter(p=>
+      p.title.toLowerCase().includes(kw) ||
+      p.excerpt.toLowerCase().includes(kw) ||
+      p.author.toLowerCase().includes(kw)
+    );
+  }
+  if(currentSort==='hot') list.sort((a,b)=>(b.likes+b.comments*2)-(a.likes+a.comments*2));
+  else if(currentSort==='new') list.sort((a,b)=>b.id-a.id);
+  else if(currentSort==='essence') list = list.filter(p=>p.essence).concat(list.filter(p=>!p.essence));
+  return list;
+}
+
+function renderPosts(){
+  const list = filterPosts();
+  postCountEl.textContent = list.length;
+  postListEl.innerHTML = '';
+
+  list.forEach((p,idx)=>{
+    // Insert native ad at position 4 (idx===3)
+    if(idx===3){
+      postListEl.appendChild(makePostCard(NATIVE_AD,true));
     }
-    const card = document.createElement('div');
-    card.className = 'tool-card';
-    card.innerHTML = `
-      <div class="tool-top">
-        <div class="tool-icon">${t.icon}</div>
-        <div class="tool-meta">
-          <div class="tool-name">
-            ${escapeHtml(t.name)}
-            ${t.badge?`<span class="tool-badge ${t.badge}">${t.badge==='hot'?'HOT':'NEW'}</span>`:''}
-          </div>
-        </div>
-      </div>
-      <div class="tool-desc">${escapeHtml(t.desc)}</div>
-      <div class="tool-tags">${t.tags.map(tag=>`<span class="tool-tag">#${escapeHtml(tag)}</span>`).join('')}</div>
-      <div class="tool-foot">
-        <div class="tool-price">
-          <span>${t.price.includes('免费') && !t.price.includes('试用') ? '<span class="free">● 免费可用</span>' : t.price.includes('部分') ? '<span class="paid">● 部分免费</span>' : '<span class="paid">● 付费</span>'}</span>
-        </div>
-        <a class="tool-go" href="${t.url}" target="_blank" rel="noopener">去使用 <span>→</span></a>
-      </div>`;
-    card.addEventListener('click',(e)=>{
-      if(e.target.closest('a')) return;
-      showToast('✨ ' + t.name + ' — 点击右上角"去使用"前往');
-    });
-    grid.appendChild(card);
+    postListEl.appendChild(makePostCard(p,false));
   });
 
-  if(filtered.length===0){
-    grid.innerHTML = `<div style="grid-column:1/-1;text-align:center;padding:60px 20px;color:var(--text-mute);">
-      <div style="font-size:48px;margin-bottom:12px;">🔍</div>
-      <div style="font-size:15px;">没找到相关工具，换个关键词试试？</div>
+  if(list.length===0){
+    postListEl.innerHTML = `<div style="grid-column:1/-1;text-align:center;padding:60px 20px;">
+      <div style="font-size:48px;margin-bottom:12px;">🌳</div>
+      <div style="font-size:15px;color:var(--text-mute);">这片树洞还没人来说过话，要不你第一个来？</div>
     </div>`;
   }
 
-  // 重新触发 stagger 动画
   requestAnimationFrame(()=>{
-    grid.classList.remove('in');
-    void grid.offsetWidth;
-    grid.classList.add('in');
+    postListEl.classList.remove('in');
+    void postListEl.offsetWidth;
+    postListEl.classList.add('in');
   });
 }
 
-// ===== 原生广告模板 =====
-function makeNativeAd(){
+function makePostCard(p,isAd){
   const el = document.createElement('div');
-  el.className = 'tool-card native-ad';
+  el.className = 'post-card' + (isAd?' native-ad':'');
+  const authorName = p.anon ? randAnon() : p.author;
+  const avatarChar = p.anon ? randChar() : authorName.charAt(0);
+  const [ca,cb] = p.avatar;
+
   el.innerHTML = `
-    <div class="tool-top">
-      <div class="tool-icon">🚀</div>
-      <div class="tool-meta">
-        <div class="tool-name">AI副业实操手册 <span class="tool-badge hot">SPONSORED</span></div>
+    <div class="post-top">
+      <span class="post-tag">${CAT_META[p.cat].emoji} ${CAT_META[p.cat].name}</span>
+      ${postTagLabel(p.tag)}
+      <div class="post-author ${p.anon?'post-anon':''}">
+        <div class="avatar" style="background:linear-gradient(135deg,${ca},${cb})">${avatarChar}</div>
+        <span>${escapeHtml(authorName)}${p.anon?' · 匿名':''}</span>
+      </div>
+      <span class="post-dot"></span>
+      <span class="post-time">${p.time}</span>
+    </div>
+    <h3 class="post-title">${escapeHtml(p.title)}</h3>
+    <div class="post-excerpt">${escapeHtml(p.excerpt)}</div>
+    <div class="post-bottom">
+      <div class="post-stats">
+        <div class="stat"><span class="icn">👁️</span>${formatNum(p.views)}</div>
+        <div class="stat"><span class="icn">👍</span>${formatNum(p.likes)}</div>
+        <div class="stat"><span class="icn">💬</span>${formatNum(p.comments)}</div>
+      </div>
+      <div class="post-stats">
+        <div class="stat" style="color:var(--accent);font-weight:700">进入详情 →</div>
       </div>
     </div>
-    <div class="tool-desc">2026年最新：普通人用AI搞钱的7个落地项目，附详细步骤+工具清单+避坑指南。</div>
-    <div class="tool-tags">
-      <span class="tool-tag">#被动收入</span>
-      <span class="tool-tag">#在家可做</span>
-      <span class="tool-tag">#零成本起步</span>
-    </div>
-    <div class="tool-foot">
-      <div class="tool-price"><span class="free">● 限时免费领取</span></div>
-      <a class="tool-go" href="#" target="_blank">立即领取 →</a>
-    </div>`;
+  `;
+  if(!isAd){
+    el.addEventListener('click',()=>openDetail(p.id));
+  } else {
+    el.addEventListener('click',(e)=>{
+      if(e.target.closest('a')) return;
+      showToast('🔥 扫码或点击了解详情');
+    });
+  }
   return el;
 }
 
-// ===== 本周飙升榜 =====
-function renderHotList(){
-  const hot = TOOLS.filter(t=>t.badge==='hot').slice(0,5);
-  const list = document.getElementById('hotList');
-  list.innerHTML = hot.map((t,i)=>`
-    <a href="${t.url}" target="_blank" style="display:flex;gap:10px;align-items:center;text-decoration:none;color:inherit;padding:6px;border-radius:8px;transition:background .15s;" class="hot-item">
-      <div style="width:20px;height:20px;border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;background:${i<3?'linear-gradient(135deg,#ef4444,#f59e0b)':'rgba(255,255,255,.05)'};color:${i<3?'#fff':'var(--text-mute)'};flex-shrink:0;">${i+1}</div>
-      <div style="font-size:14px;font-weight:600;flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${escapeHtml(t.name)}</div>
-      <span style="font-size:10px;color:var(--text-mute);">${t.icon}</span>
-    </a>
-  `).join('');
-  document.querySelectorAll('.hot-item').forEach(a=>{
-    a.addEventListener('mouseenter',e=>e.currentTarget.style.background='var(--surface-hover)');
-    a.addEventListener('mouseleave',e=>e.currentTarget.style.background='transparent');
-  });
-}
+// ==============================================================
+// CATEGORY & SORT
+// ==============================================================
+document.getElementById('catRow').addEventListener('click',e=>{
+  const t = e.target.closest('.cat-tab');
+  if(!t) return;
+  document.querySelectorAll('.cat-tab').forEach(x=>x.classList.remove('active'));
+  t.classList.add('active');
+  currentCat = t.dataset.cat;
+  renderPosts();
+});
+document.getElementById('sortTabs').addEventListener('click',e=>{
+  const t = e.target.closest('.sort-tab');
+  if(!t) return;
+  document.querySelectorAll('.sort-tab').forEach(x=>x.classList.remove('active'));
+  t.classList.add('active');
+  currentSort = t.dataset.sort;
+  renderPosts();
+});
+document.getElementById('navSearch').addEventListener('input',e=>{
+  currentKw = e.target.value;
+  renderPosts();
+  showFeed();
+  document.getElementById('feedView').scrollIntoView({behavior:'smooth',block:'start'});
+});
 
-// ===== 痛点专区 =====
-function renderPains(){
-  const pg = document.getElementById('painGrid');
-  pg.innerHTML = PAINS.map(p=>`
-    <div class="pain-card">
-      <div class="pain-emoji">${p.emoji}</div>
-      <h4>${escapeHtml(p.title)}</h4>
-      <p>${escapeHtml(p.desc)}</p>
+// ==============================================================
+// SIDEBAR
+// ==============================================================
+function renderSidebar(){
+  // Hot search
+  const hl = document.getElementById('hotList');
+  hl.innerHTML = HOT_SEARCHES.map((h,i)=>`
+    <div class="hot-item" onclick="navSearchHot('${escapeHtml(h.title)}')">
+      <div class="hot-rank ${i>=3?(i>=5?'r6':'r4'):''}">${i+1}</div>
+      <div class="hot-body">
+        <div class="hot-title">${escapeHtml(h.title)}${h.hot?' <span style="display:inline-block;padding:1px 4px;border-radius:3px;background:rgba(192,57,43,.1);color:var(--hot);font-size:9.5px;font-weight:800;margin-left:4px">热</span>':''}</div>
+        <div class="hot-heat">🔥 热度 <b>${h.heat}</b></div>
+      </div>
     </div>
   `).join('');
+
+  // Boards
+  const bl = document.getElementById('boardList');
+  bl.innerHTML = BOARDS.map(b=>{
+    const m = CAT_META[b.cat];
+    return `<a class="board-item" onclick="selectCat('${b.cat}')">
+      <div class="board-icn">${m.emoji}</div>
+      <div class="board-info">
+        <div class="board-name">${m.name}</div>
+        <div class="board-count">${b.count}帖子</div>
+      </div>
+    </a>`;
+  }).join('');
+
+  // Users
+  const ul = document.getElementById('userList');
+  ul.innerHTML = ACTIVE_USERS.map(u=>`
+    <div class="user-item">
+      <div class="avatar" style="background:linear-gradient(135deg,${u.avatar[0]},${u.avatar[1]})">${u.ch}</div>
+      <div class="user-info">
+        <div class="user-name">${escapeHtml(u.name)}${u.vip?' <span class="vip">VIP</span>':''}</div>
+        <div class="user-bio">${escapeHtml(u.bio)}</div>
+      </div>
+      <button class="user-follow" onclick="toggleFollow(this)">+ 关注</button>
+    </div>
+  `).join('');
+}
+function toggleFollow(btn){
+  if(btn.classList.contains('done')){
+    btn.classList.remove('done');
+    btn.textContent='+ 关注';
+    showToast('已取消关注');
+  }else{
+    btn.classList.add('done');
+    btn.textContent='已关注';
+    showToast('✨ 关注成功');
+  }
+}
+function navSearchHot(kw){
+  document.getElementById('navSearch').value = kw;
+  currentKw = kw;
+  renderPosts();
+  showFeed();
+  document.getElementById('feedView').scrollIntoView({behavior:'smooth',block:'start'});
+}
+function selectCat(cat){
+  const tab = document.querySelector(`.cat-tab[data-cat="${cat}"]`);
+  if(tab){
+    document.querySelectorAll('.cat-tab').forEach(x=>x.classList.remove('active'));
+    tab.classList.add('active');
+    currentCat = cat;
+    renderPosts();
+    showFeed();
+    document.getElementById('feedView').scrollIntoView({behavior:'smooth',block:'start'});
+  }
+}
+
+// ==============================================================
+// POST DETAIL + COMMENTS
+// ==============================================================
+function generateComments(postId){
+  const data = {
+    1:[
+      {floor:1,name:'匿名',ch:'匿',avatar:randColor(),time:'2小时前',op:false,likes:234,text:'同双非运营，到手也是6500，杭州。不过我做小红书图文号，每个月稳定额外3-4k，你也可以试试，别光存工资没用的。',
+        replies:[
+          {name:'想发财的咸鱼',op:true,ch:'想',avatar:randColor(),time:'2小时前',text:'兄弟做的什么赛道？我上次发了几条全是100多播放，就放弃了…'},
+          {name:'匿名',ch:'匿',avatar:randColor(),time:'1小时前',toName:'想发财的咸鱼',text:'居家好物 + 打工人办公桌改造，这个赛道竞争小，图片简单，用AI拍也没人看出来，你懂的',toOp:true},
+          {name:'想发财的咸鱼',op:true,ch:'想',avatar:randColor(),time:'1小时前',text:'收到！今晚回去开干！谢谢老哥！'},
+        ]
+      },
+      {floor:2,name:'躺平学博士',ch:'躺',avatar:randColor(),time:'2小时前',op:false,likes:156,text:'三年存五万其实已经超过60%的年轻人了，别太焦虑。真的，你去问问身边的，大部分人卡里连两万都拿不出来。'},
+      {floor:3,name:'匿名',ch:'匿',avatar:randColor(),time:'1小时前',op:false,likes:98,text:'闲鱼无货源别做了，现在已经是死红海了，做十个亏十个。不如去学AI做PPT，淘宝接定制单，一份50-200，接私活比啥都强。',
+        replies:[
+          {name:'匿名',ch:'匿',avatar:randColor(),time:'50分钟前',text:'AI做PPT用的什么？求推荐'},
+          {name:'匿名',ch:'匿',avatar:randColor(),time:'40分钟前',toName:'匿名',text:'就某马，还有某PPT，一搜一堆，主要是要会包装自己的淘宝店，主图做好看了单子自然来'},
+        ]
+      },
+      {floor:4,name:'副业女青年',ch:'副',avatar:randColor(),time:'1小时前',op:false,likes:187,text:'说一个我正在做的，小红书接AI取名，宝宝起名+店铺起名+宠物起名，一单收费9.9-99不等，每天5-10单，利润0成本。核心是要会做内容，吸引的都是精准宝妈和创业粉。'},
+      {floor:5,name:'匿名',ch:'匿',avatar:randColor(),time:'45分钟前',op:false,likes:67,text:'有没有人拉个搞钱裙？不要广告哥那种，真实交流的，我私发管理员'},
+    ],
+    2:[
+      {floor:1,name:'00后整顿办',ch:'0',avatar:randColor(),time:'4小时前',op:false,likes:567,text:'干得漂亮！！！我上次直接5:59就站起来走了，领导在后面喊我我假装没听见。下班的脚步比什么都坚定。',
+        replies:[
+          {name:'努力的牛马',ch:'努',avatar:randColor(),time:'3小时前',text:'哈哈哈哈哈姐妹牛的，我下次也要这么干'},
+        ]
+      },
+      {floor:2,name:'资深HR悄悄说',ch:'H',avatar:randColor(),time:'4小时前',op:false,likes:423,text:'前HR说句实话：领导真拿你没办法，只要你活没出错，他开不掉你。劳动法保护的就是你。写检讨？你写了就落了实锤，直接不写就行。'},
+      {floor:3,name:'匿名',ch:'匿',avatar:randColor(),time:'3小时前',op:false,likes:312,text:'我同事每天准点下班，主管说他"没有奋斗精神"，结果他说："我拿的是8小时的工资，奋斗的部分你加班费给了吗？" 主管当场没话。'},
+      {floor:4,name:'匿名',ch:'匿',avatar:randColor(),time:'2小时前',op:false,likes:201,text:'说实话，下班前10分钟安排活，就是故意的。就是想让你加班，显得部门很忙，领导好向上汇报。这种公司趁早走。'},
+    ],
+    3:[
+      {floor:1,name:'三战上岸人',ch:'岸',avatar:randColor(),time:'7小时前',op:false,likes:345,text:'兄弟我懂你。我三战才上，第二年失败的时候我爸也说了一模一样的话，"你别考了我们养不起"。最后我贷了助学贷款，边打工边考了第三年。现在研一，虽然穷但踏实。先工作攒钱也可以，千万别放弃自己。',
+        replies:[
+          {name:'考研钉子户',op:true,ch:'考',avatar:randColor(),time:'6小时前',text:'谢谢老哥，你这句话我记下了。先好好工作，三战的事，我不会放弃的。'},
+        ]
+      },
+      {floor:2,name:'匿名',ch:'匿',avatar:randColor(),time:'6小时前',op:false,likes:287,text:'你爸妈太过分了，二战你又没花家里钱。不过成年人了，离开家独立也好，先赚钱，经济独立了才有话语权。'},
+      {floor:3,name:'考上公务员就改名',ch:'公',avatar:randColor(),time:'5小时前',op:false,likes:256,text:'真的太共情了，我考公失败那次我妈连续三天没给我好脸色，吃饭都在唉声叹气，比我还难受。不过后面我找了个工作，边工作边考，第二次上岸了。兄弟加油。'},
+    ],
+    4:[
+      {floor:1,name:'怼人小能手',ch:'怼',avatar:randColor(),time:'11小时前',op:false,likes:892,text:'"我养条狗每月才300，狗还会朝我摇尾巴" 哈哈哈哈哈哈哈哈哈哈哈哈 笑死我了 楼主神回复 怼得好'},
+      {floor:2,name:'匿名',ch:'匿',avatar:randColor(),time:'10小时前',op:false,likes:654,text:'月薪6k还嫌8k少，她是觉得自己那985文凭能卖多少钱啊？',
+        replies:[
+          {name:'匿名',ch:'匿',avatar:randColor(),time:'9小时前',text:'有些人就是这样，把自己当商品估价，觉得结婚是找个人扶贫。'},
+          {name:'匿名',ch:'匿',avatar:randColor(),time:'8小时前',toName:'匿名',text:'没错，自己工资6k花6k，还要求对方月薪2万+有房有车。典型双标。'},
+        ]
+      },
+      {floor:3,name:'被相亲坑过的人',ch:'坑',avatar:randColor(),time:'8小时前',op:false,likes:432,text:'我上次相亲，女生说她不工作，要求男方月入2万。我问她你有什么，她说"我有子宫能生孩子"。我直接拉黑了。'},
+    ],
+    default_comments:[
+      {floor:1,name:'匿名',ch:'匿',avatar:randColor(),time:'刚刚',op:false,likes:0,text:'太真实了，说的就是我现在的处境。'},
+      {floor:2,name:'路过的网友',ch:'路',avatar:randColor(),time:'刚刚',op:false,likes:0,text:'支持一下，感同身受了属于是。'},
+      {floor:3,name:'匿名',ch:'匿',avatar:randColor(),time:'刚刚',op:false,likes:0,text:'评论区有没有好心人给点建议？',
+        replies:[
+          {name:'热心群众',ch:'热',avatar:randColor(),time:'刚刚',text:'具体情况具体说呀，我们才能帮上忙'},
+        ]
+      },
+    ],
+  };
+  return data[postId] || data.default_comments;
+}
+
+function openDetail(id){
+  const p = POSTS.find(x=>x.id===id);
+  if(!p) return;
+  const comments = generateComments(id);
+  const authorName = p.anon ? randAnon() : p.author;
+  const avatarChar = p.anon ? randChar() : authorName.charAt(0);
+  const [ca,cb] = p.avatar;
+
+  const bodyHtml = p.body.map(para=>{
+    if(para.trim()==='.') return '';
+    if(para.length && (para.startsWith('一、')||para.startsWith('二、')||para.startsWith('三、')||para.startsWith('（')||/^[一二三四五六七八九十]+、/.test(para))){
+      return `<p><b style="color:var(--accent)">${escapeHtml(para.split('：')[0].split(':')[0])}</b>${escapeHtml(para.substring(para.indexOf('：')>-1?para.indexOf('：')+1:(para.indexOf(':')>-1?para.indexOf(':')+1:0)))}</p>`;
+    }
+    if(para.startsWith('*')||para.startsWith('-')||para.startsWith('•')){
+      return `<p style="padding-left:16px;">• ${escapeHtml(para.substring(2))}</p>`;
+    }
+    if(para.length<20 && /[A-Za-z\u4e00-\u9fa5][：:]/.test(para)===false && /^[（(]/.test(para)===false){
+      if(/^[（(剧透]/.test(para)) return `<blockquote>${escapeHtml(para)}</blockquote>`;
+      return `<p><b>${escapeHtml(para)}</b></p>`;
+    }
+    return `<p>${escapeHtml(para)}</p>`;
+  }).join('');
+
+  const commentsHtml = comments.map(c=>renderComment(c,p)).join('');
+
+  document.getElementById('detailView').innerHTML = `
+    <button class="back-btn" onclick="showFeed()">← 返回树洞</button>
+
+    <div class="detail-card fade-up">
+      <div class="detail-header">
+        <div class="detail-tags">
+          <span class="post-tag">${CAT_META[p.cat].emoji} ${CAT_META[p.cat].name}</span>
+          ${postTagLabel(p.tag)}
+        </div>
+        <h1 class="detail-title">${escapeHtml(p.title)}</h1>
+        <div class="detail-meta">
+          <div class="detail-author">
+            <div class="avatar" style="background:linear-gradient(135deg,${ca},${cb})">${avatarChar}</div>
+            <div>
+              <div class="author-name">${escapeHtml(authorName)}${p.anon?' <span style="font-size:11px;color:var(--text-mute);font-weight:500">· 匿名发布</span>':''}</div>
+              <div class="author-bio">${p.time} · ${formatNum(p.views)} 次浏览</div>
+            </div>
+          </div>
+          <div class="detail-actions">
+            <button class="act-btn" id="likeBtn" onclick="toggleBigLike(this)">👍 <span class="num">${formatNum(p.likes)}</span></button>
+            <button class="act-btn" id="collectBtn" onclick="toggleCollect(this)">⭐ 收藏</button>
+            <button class="act-btn" onclick="showToast('📎 已复制帖子链接')">🔗 分享</button>
+          </div>
+        </div>
+      </div>
+      <div class="detail-body">${bodyHtml}</div>
+      <div class="detail-stats-bar">
+        <div class="big-stat" onclick="toggleBigLike(this)">
+          <span>👍</span><span>点赞</span> <b>${formatNum(p.likes)}</b>
+        </div>
+        <div class="big-stat" onclick="document.getElementById('commentInput').focus()">
+          <span>💬</span><span>评论</span> <b>${formatNum(p.comments)}</b>
+        </div>
+        <div class="big-stat" onclick="toggleCollect(document.getElementById('collectBtn'))">
+          <span>⭐</span><span>收藏</span> <b>${formatNum(Math.floor(p.likes*0.3))}</b>
+        </div>
+        <div class="big-stat" onclick="showToast('📤 已转发到广场')">
+          <span>🔄</span><span>转发</span> <b>${formatNum(Math.floor(p.comments*0.2))}</b>
+        </div>
+      </div>
+    </div>
+
+    <div class="comments-card fade-up">
+      <div class="comments-header">
+        <h3>💬 全部评论 <span class="count">(${comments.length}+)</span></h3>
+        <div class="comment-sort">
+          <button class="active">热度</button>
+          <button>最新</button>
+          <button>只看楼主</button>
+        </div>
+      </div>
+
+      <div class="comment-input-wrap">
+        <div class="avatar" style="background:linear-gradient(135deg,#8b7355,#6b5344)">匿</div>
+        <div class="comment-input-body">
+          <textarea id="commentInput" placeholder="说点什么吧，这里也是匿名的…"></textarea>
+          <div class="comment-input-actions">
+            <div class="comment-tools">
+              <span title="表情">😊</span>
+              <span title="图片">🖼️</span>
+              <span title="艾特">@</span>
+              <span title="话题">#</span>
+            </div>
+            <button class="btn-submit-comment" onclick="submitMainComment()">🌳 发布评论</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Comment area ad -->
+      <div class="comment-ad">
+        <div>
+          <h5>🎯 说话太直总得罪人？试试这个 AI 回复神器</h5>
+          <p>粘贴聊天记录，一键生成高情商回复，职场/恋爱/家庭全场景覆盖</p>
+        </div>
+        <a href="#" class="ad-cta" onclick="showToast('✨ 立即体验 AI 回复助手');return false">免费试试 →</a>
+      </div>
+
+      <div class="comment-list" id="commentList">${commentsHtml}</div>
+    </div>
+  `;
+
+  document.getElementById('feedView').classList.add('hide');
+  document.getElementById('detailView').classList.add('show');
+  window.scrollTo({top:0,behavior:'smooth'});
+
+  // Observe detail fade
   requestAnimationFrame(()=>{
-    pg.classList.remove('in');
-    void pg.offsetWidth;
-    pg.classList.add('in');
+    document.querySelectorAll('#detailView .fade-up').forEach(el=>el.classList.add('in'));
   });
 }
 
-// ===== 分类筛选 =====
-document.getElementById('catWrap').addEventListener('click',e=>{
-  const chip = e.target.closest('.cat-chip');
-  if(!chip) return;
-  document.querySelectorAll('.cat-chip').forEach(c=>c.classList.remove('active'));
-  chip.classList.add('active');
-  currentCat = chip.dataset.cat;
-  renderTools();
-  document.getElementById('tools').scrollIntoView({behavior:'smooth',block:'start'});
+function renderComment(c,post){
+  const opName = post.anon ? randAnon() : post.author;
+  const repliesHtml = (c.replies||[]).map(r=>{
+    const [ra,rb] = r.avatar;
+    return `<div class="reply">
+      ${avatarWith(r.avatar,r.ch)}
+      <div class="reply-body">
+        <div class="reply-head">
+          <span class="reply-name${r.op?' op':''}">${r.op?opName:escapeHtml(r.name)}</span>
+          ${r.toName?`<span class="reply-to">回复 <b>${r.toName}</b>:</span>`:''}
+          <span class="reply-time">${r.time}</span>
+        </div>
+        <div>${escapeHtml(r.text)}</div>
+        <div class="reply-actions">
+          <span class="reply-act" onclick="toggleLike(this)">👍 ${r.likes||Math.floor(Math.random()*30)}</span>
+          <span class="reply-act" onclick="showReplyInput(this)">💬 回复</span>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+
+  const [a,b] = c.avatar;
+  const replyCount = (c.replies||[]).length;
+  return `<div class="comment">
+    ${avatarWith(c.avatar,c.ch)}
+    <div class="comment-body">
+      <div class="comment-head">
+        <span class="comment-name">${escapeHtml(c.name)}</span>
+        ${c.op?'<span class="comment-name op">楼主</span>':''}
+        <span class="comment-floor">${c.floor}楼</span>
+        <span class="comment-dot" style="width:3px;height:3px;border-radius:50%;background:var(--text-mute);display:inline-block"></span>
+        <span class="comment-time">${c.time}</span>
+      </div>
+      <div class="comment-text">${escapeHtml(c.text)}</div>
+      <div class="comment-actions">
+        <span class="comment-act" onclick="toggleLike(this)">👍 ${formatNum(c.likes)}</span>
+        <span class="comment-act reply" onclick="showCommentReply(this)">💬 回复</span>
+        <span class="comment-act" onclick="showToast('🚩 已举报，等待审核')">🚩 举报</span>
+      </div>
+      ${replyCount>0?`<div class="reply-section">${repliesHtml}
+        ${replyCount>=2?`<div class="toggle-replies" onclick="showToast('已展开全部 '+${replyCount}+' 条回复')">📜 查看更多回复 (${replyCount})</div>`:''}
+      </div>`:''}
+      <div class="reply-input" style="display:none">
+        ${avatarWith(randColor(),'匿')}
+        <textarea placeholder="回复 ${c.floor}楼..."></textarea>
+        <button onclick="submitReply(this)">回复</button>
+      </div>
+    </div>
+  </div>`;
+}
+
+function showFeed(){
+  document.getElementById('feedView').classList.remove('hide');
+  document.getElementById('detailView').classList.remove('show');
+}
+function goHome(e){
+  if(e) e.preventDefault();
+  showFeed();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function toggleLike(el){
+  if(el.classList.contains('liked')){
+    el.classList.remove('liked');
+    const parts = el.textContent.trim().split(' ');
+    const n = parseInt(parts[parts.length-1]) || 0;
+    el.innerHTML = el.innerHTML.replace(/(\d+)/,Math.max(0,n-1));
+  }else{
+    el.classList.add('liked');
+    let hasNum = /\d/.test(el.textContent);
+    if(hasNum){
+      const parts = el.textContent.match(/(\d+)/);
+      if(parts){
+        const n = parseInt(parts[1]);
+        el.innerHTML = el.innerHTML.replace(/(\d+)/,n+1);
+      }
+    }else{
+      el.innerHTML = el.innerHTML + ' 1';
+    }
+    showToast('👍 点赞成功');
+  }
+}
+function toggleBigLike(el){
+  if(el.classList.contains('liked')){
+    el.classList.remove('liked');
+    showToast('已取消点赞');
+  }else{
+    el.classList.add('liked');
+    showToast('❤️ 点赞成功，谢谢支持~');
+  }
+}
+function toggleCollect(el){
+  if(el.classList.contains('collected')){
+    el.classList.remove('collected');
+    el.innerHTML = '⭐ 收藏';
+    showToast('已取消收藏');
+  }else{
+    el.classList.add('collected');
+    el.innerHTML = '⭐ 已收藏';
+    showToast('📚 收藏成功，快去「我的收藏」看看');
+  }
+}
+function showCommentReply(act){
+  const inputWrap = act.closest('.comment-body').querySelector('.reply-input');
+  inputWrap.style.display = inputWrap.style.display==='flex' ? 'none' : 'flex';
+  if(inputWrap.style.display==='flex') inputWrap.querySelector('textarea').focus();
+}
+function showReplyInput(act){
+  showCommentReply(act);
+}
+function submitReply(btn){
+  const ta = btn.parentElement.querySelector('textarea');
+  if(!ta.value.trim()){showToast('说点什么再发吧~');return}
+  showToast('✅ 回复成功（匿名）');
+  ta.value = '';
+  btn.parentElement.style.display='none';
+}
+function submitMainComment(){
+  const ta = document.getElementById('commentInput');
+  if(!ta.value.trim()){showToast('写点什么再发吧~');return}
+  showToast('🌳 评论已匿名发布到树洞');
+  ta.value = '';
+}
+
+// ==============================================================
+// POST MODAL
+// ==============================================================
+function openPostModal(){document.getElementById('postModal').classList.add('show')}
+function closePostModal(){document.getElementById('postModal').classList.remove('show')}
+document.getElementById('postModal').addEventListener('click',e=>{
+  if(e.target.id==='postModal') closePostModal();
 });
+function submitPost(){
+  const title = document.getElementById('postTitle').value.trim();
+  const content = document.getElementById('postContent').value.trim();
+  const cat = document.getElementById('postCat').value;
+  if(!title){showToast('请先写个标题');return}
+  if(title.length<5){showToast('标题至少5个字哦');return}
+  if(!content){showToast('正文写点内容吧');return}
+  if(content.length<10){showToast('正文太短啦，多写点~');return}
 
-// ===== 搜索 =====
-const searchInput = document.getElementById('searchInput');
-function doSearch(){
-  currentKw = searchInput.value;
-  renderTools();
-  document.getElementById('tools').scrollIntoView({behavior:'smooth',block:'start'});
+  // Add to posts
+  const newPost = {
+    id:POSTS.length+1,
+    cat,
+    tag:'new',
+    title,
+    author: document.getElementById('postAnon').checked ? '匿名' : '我',
+    anon: document.getElementById('postAnon').checked,
+    avatar: randColor(),
+    time:'刚刚',
+    excerpt: content.substring(0,100) + (content.length>100?'…':''),
+    likes:0,comments:0,views:1,
+    essence:false,
+    body: content.split('\n').map(x=>x.trim()).filter(x=>x)
+  };
+  POSTS.unshift(newPost);
+
+  closePostModal();
+  document.getElementById('postTitle').value='';
+  document.getElementById('postContent').value='';
+  showFeed();
+  renderPosts();
+  showToast('🎉 发布成功！你说的话已种进树洞');
+  window.scrollTo({top:200,behavior:'smooth'});
 }
-searchInput.addEventListener('keydown',e=>{if(e.key==='Enter') doSearch()});
-searchInput.addEventListener('input',()=>{
-  currentKw = searchInput.value;
-  renderTools();
-});
 
-// ===== Toast =====
-let toastTimer;
-function showToast(text){
-  const toast = document.getElementById('toast');
-  document.getElementById('toastText').textContent = text;
-  toast.classList.add('show');
-  clearTimeout(toastTimer);
-  toastTimer = setTimeout(()=>toast.classList.remove('show'),2200);
-}
-
-// ===== Utils =====
-function escapeHtml(s){
-  const d = document.createElement('div');
-  d.textContent = s;
-  return d.innerHTML;
-}
-
-// ===== Scroll Reveal =====
-const io = new IntersectionObserver((entries)=>{
+// ==============================================================
+// SCROLL REVEAL
+// ==============================================================
+const io = new IntersectionObserver(entries=>{
   entries.forEach(en=>{
     if(en.isIntersecting){
       en.target.classList.add('in');
       io.unobserve(en.target);
     }
   });
-},{threshold:.08});
-
+},{threshold:.06});
 document.querySelectorAll('.fade-up, .stagger').forEach(el=>io.observe(el));
 
-// ===== 初始化 =====
-renderTools();
-renderHotList();
-renderPains();
+// ==============================================================
+// INIT
+// ==============================================================
+renderPosts();
+renderSidebar();
 </script>
 </body>
 </html>
